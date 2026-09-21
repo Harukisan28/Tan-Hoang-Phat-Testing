@@ -1,0 +1,244 @@
+.activityHero {
+  --page-hero-padding-top: clamp(1.5rem, 3.5vw, 3rem);
+  --page-hero-padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  --page-hero-breadcrumb-gap: clamp(1.5rem, 4vw, 4rem);
+  --page-hero-inner-gap: clamp(1.5rem, 6vw, 6rem);
+}
+
+.activityHero :global(.page-title) {
+  max-width: 18ch;
+  font-size: clamp(2.45rem, 5vw, 4.5rem);
+  line-height: 1.02;
+}
+
+.activityHero :global(.lead) {
+  font-size: clamp(0.96rem, 1.25vw, 1.1rem);
+  line-height: 1.55;
+}
+
+.heroStat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0 1rem 1.2rem;
+  border-left: 3px solid var(--color-orange-500);
+}
+
+.heroStat strong {
+  color: var(--color-green-700);
+  font-size: 3.8rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 0.9;
+}
+
+.heroStat span {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.introRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  align-items: end;
+  margin-bottom: 3.5rem;
+}
+
+.introRow > * {
+  min-width: 0;
+}
+
+.introRow > p {
+  max-width: 42ch;
+  padding-bottom: 0.25rem;
+}
+
+.areaLayout {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.35fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.areaLayout > * {
+  min-width: 0;
+}
+
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+.sidebarLabel {
+  margin: 0 0 0.75rem;
+  color: var(--color-green-700);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sidebar nav {
+  display: grid;
+  border-top: 1px solid var(--color-line);
+}
+
+.sidebar a {
+  display: flex;
+  min-height: 3.5rem;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-navy-700);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.sidebar a:hover,
+.sidebar a:focus-visible,
+.sidebar .selectedLink {
+  color: var(--color-green-800);
+}
+
+.sidebar a svg {
+  flex: 0 0 auto;
+  color: var(--color-orange-500);
+  transition: transform var(--motion-standard);
+}
+
+.sidebar a:hover svg,
+.sidebar a:focus-visible svg,
+.sidebar .selectedLink svg {
+  transform: translate(3px, -3px);
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  align-items: center;
+}
+
+.steps {
+  display: grid;
+  gap: 1rem;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.step > span {
+  color: var(--color-orange-500);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.step strong {
+  color: var(--color-navy-950);
+  font-size: 1rem;
+}
+
+.step p {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0.3rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.step p svg {
+  color: var(--color-green-700);
+}
+
+.step > svg {
+  color: var(--color-green-700);
+}
+
+@media (max-width: 1080px) {
+  .areaLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .sidebar nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.25rem;
+  }
+
+  .processGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .activityHero {
+    --page-hero-padding-top: 1.25rem;
+    --page-hero-padding-bottom: 2.75rem;
+    --page-hero-breadcrumb-gap: 2rem;
+    --page-hero-inner-gap: 1.25rem;
+  }
+
+  .activityHero :global(.page-title) {
+    max-width: 13ch;
+    font-size: clamp(2.25rem, 10vw, 3.6rem);
+  }
+
+  .introRow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .sidebar nav {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 761px) {
+  .activityHero {
+    --page-hero-padding-top: 1.25rem;
+    --page-hero-padding-bottom: 2rem;
+    --page-hero-breadcrumb-gap: 1.5rem;
+    --page-hero-inner-gap: 2rem;
+  }
+
+  .activityHero :global(.page-title) {
+    max-width: 18ch;
+    font-size: clamp(2.2rem, 4vw, 3.7rem);
+  }
+
+  .activityHero :global(.lead) {
+    margin-top: 0.9rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .introRow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .sidebar nav {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-height: 700px) {
+  .introRow {
+    margin-bottom: 2rem;
+  }
+}

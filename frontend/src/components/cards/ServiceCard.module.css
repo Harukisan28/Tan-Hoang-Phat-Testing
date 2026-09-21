@@ -1,0 +1,89 @@
+.card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-green-700);
+  color: var(--color-white);
+  transition: box-shadow var(--motion-standard), transform var(--motion-standard);
+}
+
+.card:hover,
+.card:focus-visible {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 1.08 / 0.92;
+  overflow: hidden;
+  background: var(--color-navy-700);
+}
+
+.media img {
+  object-fit: cover;
+  transition: filter var(--motion-standard);
+}
+
+.card:hover .media img,
+.card:focus-visible .media img {
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem 1rem 1.15rem;
+}
+
+.content p {
+  max-width: 18ch;
+  margin: 0;
+  color: var(--color-white);
+  font-size: clamp(0.92rem, 1.4vw, 1.12rem);
+  font-weight: var(--font-weight-heading);
+  line-height: 1.18;
+}
+
+.content span {
+  max-width: 26ch;
+  margin-top: 0.55rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.77rem;
+  line-height: 1.45;
+}
+
+.arrow {
+  position: absolute;
+  right: 0.95rem;
+  bottom: 1rem;
+  color: var(--color-orange-300);
+  transition: transform var(--motion-standard);
+}
+
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  transform: translate(4px, -4px);
+}
+
+@media (max-width: 1100px) {
+  .content {
+    min-height: 7.5rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .card {
+    width: min(76vw, 18rem);
+    flex: 0 0 min(76vw, 18rem);
+  }
+
+  .media {
+    aspect-ratio: 1.15 / 1;
+  }
+}

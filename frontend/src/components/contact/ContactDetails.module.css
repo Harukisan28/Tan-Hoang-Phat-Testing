@@ -1,0 +1,79 @@
+.details {
+  min-height: 100%;
+  padding: clamp(2rem, 5vw, 4rem);
+  background: var(--color-navy-950);
+  color: var(--color-white);
+}
+
+.details :global(.eyebrow) {
+  color: var(--color-orange-300);
+}
+
+.details h2 {
+  max-width: 13ch;
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: var(--font-weight-heading);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.copy {
+  max-width: 43ch;
+  margin: 1.35rem 0 2.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.details ul {
+  display: grid;
+  gap: 1.35rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.details li {
+  display: flex;
+  min-width: 0;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.details li > span {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.7rem;
+  height: 2.7rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--color-orange-300);
+}
+
+.details small,
+.details a,
+.details p {
+  display: block;
+}
+
+.details small {
+  margin-bottom: 0.15rem;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.details a,
+.details p {
+  min-width: 0;
+  margin: 0;
+  color: var(--color-white);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.details a:hover {
+  color: var(--color-orange-300);
+}

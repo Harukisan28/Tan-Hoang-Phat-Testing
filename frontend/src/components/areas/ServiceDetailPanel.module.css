@@ -1,0 +1,129 @@
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-white);
+  box-shadow: var(--shadow-soft);
+  scroll-margin-top: 2rem;
+}
+
+.media {
+  width: 100%;
+  min-width: 0;
+  min-height: clamp(16rem, 32vw, 27rem);
+  aspect-ratio: 4 / 3;
+  background: var(--color-navy-700);
+}
+
+.media img {
+  object-fit: cover;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(1.25rem, 3.5vw, 3.5rem);
+}
+
+.label {
+  margin: 0;
+  color: var(--color-green-700);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.content h2 {
+  max-width: 12ch;
+  margin: 0.55rem 0 0;
+  color: var(--color-navy-950);
+  font-size: clamp(1.85rem, 3.6vw, 3.5rem);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: -0.04em;
+  line-height: 1.03;
+}
+
+.summary {
+  max-width: 52ch;
+  margin: 1rem 0 0;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+.content ul {
+  display: grid;
+  min-width: 0;
+  gap: 0.55rem;
+  padding: 0;
+  margin: 1.5rem 0 1.75rem;
+  color: var(--color-navy-700);
+  font-size: 0.86rem;
+  list-style: none;
+}
+
+.content li {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+}
+
+.content li::before {
+  flex: 0 0 auto;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-orange-500);
+  content: '';
+}
+
+.corner {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  color: var(--color-orange-500);
+}
+
+@media (max-width: 840px) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+
+  .media {
+    min-height: clamp(14rem, 58vw, 20rem);
+    aspect-ratio: 4 / 3;
+  }
+
+  .content h2 {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .media {
+    min-height: clamp(12rem, 64vw, 16rem);
+  }
+
+  .content {
+    padding: 1.25rem;
+  }
+
+  .corner {
+    right: 1.25rem;
+    top: 1.25rem;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 841px) {
+  .media {
+    min-height: 18rem;
+  }
+}

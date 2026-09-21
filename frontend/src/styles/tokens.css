@@ -1,0 +1,29 @@
+:root {
+  --font-heading: 'Noto Sans', Arial, Helvetica, sans-serif;
+  --font-body: 'Roboto', 'Noto Sans', Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-body);
+  --font-weight-body: 400;
+  --font-weight-heading: 900;
+  --color-navy-950: #0b1d2d;
+  --color-navy-900: #102c46;
+  --color-navy-700: #1d4662;
+  --color-green-800: #0d5a3b;
+  --color-green-700: #0e7a4b;
+  --color-green-500: #40a85a;
+  --color-orange-500: #ef7d2d;
+  --color-orange-300: #f5a45b;
+  --color-ink: #14202b;
+  --color-muted: #63717a;
+  --color-surface: #f4f7f4;
+  --color-line: #d9e4de;
+  --color-white: #ffffff;
+  --color-danger: #b42318;
+  --content-max: 1200px;
+  --section-space: clamp(4.5rem, 9vw, 8rem);
+  --radius-card: 20px;
+  --radius-button: 999px;
+  --shadow-card: 0 18px 42px rgba(11, 29, 45, 0.12);
+  --shadow-soft: 0 12px 34px rgba(11, 29, 45, 0.08);
+  --focus-ring: 0 0 0 3px rgba(64, 168, 90, 0.35);
+  --motion-standard: 220ms ease;
+}
