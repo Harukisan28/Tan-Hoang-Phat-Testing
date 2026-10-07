@@ -39,6 +39,9 @@ jobs:
 
       - name: Build frontend
         run: npm run build
+        env:
+          VITE_PRODUCT_SHEET_ID: ${{ vars.VITE_PRODUCT_SHEET_ID || '1TJ3ni1bJfRdWwMUopChnjMLibzWqCrp4WZMN9nwwHRU' }}
+          VITE_PRODUCT_SHEET_GID: ${{ vars.VITE_PRODUCT_SHEET_GID || '0' }}
 
       - name: Add GitHub Pages SPA fallback
         run: cp dist/index.html dist/404.html

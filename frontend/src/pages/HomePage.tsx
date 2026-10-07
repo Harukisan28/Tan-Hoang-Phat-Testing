@@ -1,5 +1,6 @@
-import { companyProfile, inoxProducts, serviceAreas } from '../data/siteData';
-import type { RouteHref } from '../types/site';
+import { companyProfile, serviceAreas } from '../data/siteData';
+import { groupProductsByCategory } from '../data/productCatalog';
+import type { InoxProduct, RouteHref } from '../types/site';
 import { RuleHeading } from '../components/sections/RuleHeading';
 import { ValuesGrid } from '../components/about/ValuesGrid';
 import { InoxProductCard } from '../components/cards/InoxProductCard';
@@ -9,10 +10,14 @@ import { ProofStrip } from '../components/home/ProofStrip';
 import styles from './HomePage.module.css';
 
 interface HomePageProps {
+  products: InoxProduct[];
   onNavigate: (href: RouteHref) => void;
 }
 
-export function HomePage({ onNavigate }: HomePageProps) {
+export function HomePage({ products, onNavigate }: HomePageProps) {
+  const popularProducts = products.filter((product) => product.popular);
+  const productCategories = groupProductsByCategory(products);
+
   return (
     <>
       <IdentityHero onNavigate={onNavigate} />
@@ -29,18 +34,42 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      {popularProducts.length > 0 && (
+        <section className={`${styles.popularSection} section`} aria-labelledby="popular-products-title">
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <div>
+                <p className="eyebrow">Được quan tâm</p>
+                <h2 id="popular-products-title" className="section-heading">Sản phẩm nổi bật</h2>
+                <p className="lead">Những sản phẩm được Tân Hoàng Phát giới thiệu nổi bật.</p>
+              </div>
+            </div>
+            <div className={styles.productGrid}>
+              {popularProducts.map((product) => <InoxProductCard key={product.slug} product={product} onNavigate={onNavigate} />)}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className={`${styles.productsSection} section`} aria-labelledby="products-title">
         <div className="container">
           <div className={styles.sectionHeader}>
             <div>
-              <p className="eyebrow">Sản phẩm tiêu biểu</p>
-              <h2 id="products-title" className="section-heading">Bàn và ghế inox cho nhu cầu sử dụng hằng ngày.</h2>
-              <p className="lead">Tìm hiểu thông tin tham khảo về hai dòng sản phẩm inox, cách vệ sinh và những không gian sử dụng thường gặp.</p>
+              <p className="eyebrow">Danh mục sản phẩm</p>
+              <h2 id="products-title" className="section-heading">Sản phẩm tiêu biểu</h2>
+              <p className="lead">Khám phá đầy đủ các sản phẩm được sắp xếp theo danh mục.</p>
             </div>
           </div>
-          <div className={styles.productGrid}>
-            {inoxProducts.map((product) => <InoxProductCard key={product.slug} product={product} onNavigate={onNavigate} />)}
-          </div>
+          {productCategories.length > 0 ? productCategories.map(({ category, products: categoryProducts }) => (
+            <section className={styles.categoryGroup} key={category} aria-label={category}>
+              <h3 className={styles.categoryTitle}>{category}</h3>
+              <div className={styles.productGrid}>
+                {categoryProducts.map((product) => <InoxProductCard key={product.slug} product={product} onNavigate={onNavigate} />)}
+              </div>
+            </section>
+          )) : (
+            <p className={styles.emptyProducts}>Danh mục sản phẩm đang được cập nhật.</p>
+          )}
         </div>
       </section>
 

@@ -1,5 +1,5 @@
-export type InoxProductSlug = 'ban-inox' | 'ghe-inox';
-export type InoxProductPath = `/san-pham/${InoxProductSlug}`;
+export type InoxProductSlug = string;
+export type InoxProductPath = `/san-pham/${string}`;
 export type RoutePath = '/' | '/linh-vuc-hoat-dong' | '/lien-he' | InoxProductPath;
 
 export type ServiceSlug =
@@ -50,13 +50,16 @@ export interface InoxProduct {
   slug: InoxProductSlug;
   path: InoxProductPath;
   title: string;
+  category: string;
   shortDescription: string;
   description: string;
-  highlights: string[];
-  useCases: string[];
+  highlights?: string[];
+  useCases?: string[];
   imageUrl: string;
   imageAlt: string;
-  imageCredit: string;
+  imageCredit?: string;
+  popular: boolean;
+  showMaterialReferences?: boolean;
 }
 
 export interface MaterialReference {

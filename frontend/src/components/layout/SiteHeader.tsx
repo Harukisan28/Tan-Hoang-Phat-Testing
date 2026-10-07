@@ -1,15 +1,16 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ChevronDown, Mail, Menu, PhoneCall, X } from 'lucide-react';
-import { companyProfile, inoxProducts, navItems } from '../../data/siteData';
-import type { RouteHref, RoutePath } from '../../types/site';
+import { companyProfile, navItems } from '../../data/siteData';
+import type { InoxProduct, RouteHref, RoutePath } from '../../types/site';
 import { navigateTo, siteAsset, siteHref } from '../../utils/routing';
 import styles from './SiteHeader.module.css';
 
 interface SiteHeaderProps {
   currentPath: RoutePath;
+  products: InoxProduct[];
 }
 
-export function SiteHeader({ currentPath }: SiteHeaderProps) {
+export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
@@ -82,7 +83,7 @@ export function SiteHeader({ currentPath }: SiteHeaderProps) {
     navigateTo(href);
   };
 
-  const renderProductLinks = (className: string, tabIndex?: number) => inoxProducts.map((product) => {
+  const renderProductLinks = (className: string, tabIndex?: number) => products.map((product) => {
     const href = product.path;
     return (
       <a

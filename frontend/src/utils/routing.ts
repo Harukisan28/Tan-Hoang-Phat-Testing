@@ -12,8 +12,7 @@ export const isRoutePath = (value: string): value is RoutePath =>
   value === '/' ||
   value === '/linh-vuc-hoat-dong' ||
   value === '/lien-he' ||
-  value === '/san-pham/ban-inox' ||
-  value === '/san-pham/ghe-inox';
+  /^\/san-pham\/[a-z0-9-]+$/.test(value);
 
 export const isServiceSlug = (value: string): value is ServiceSlug =>
   serviceSlugs.includes(value as ServiceSlug);

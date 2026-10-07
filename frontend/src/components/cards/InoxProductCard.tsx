@@ -25,7 +25,7 @@ export function InoxProductCard({ product, onNavigate }: InoxProductCardProps) {
       </div>
       <div className={styles.content}>
         <div>
-          <p className="eyebrow">Sản phẩm inox</p>
+          <p className="eyebrow">{product.category}</p>
           <h3>{product.title}</h3>
           <p className={styles.summary}>{product.shortDescription}</p>
         </div>

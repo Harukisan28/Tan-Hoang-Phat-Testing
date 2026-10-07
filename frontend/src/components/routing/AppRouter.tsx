@@ -6,7 +6,7 @@ import { AreasPage } from '../../pages/AreasPage';
 import { ContactPage } from '../../pages/ContactPage';
 import { HomePage } from '../../pages/HomePage';
 import { ProductDetailPage } from '../../pages/ProductDetailPage';
-import { inoxProducts } from '../../data/siteData';
+import { useProductCatalog } from '../../hooks/useProductCatalog';
 import type { RouteHref, RoutePath } from '../../types/site';
 import { getCurrentPath, navigateTo, siteHref } from '../../utils/routing';
 
@@ -27,6 +27,7 @@ function NotFoundPage({ onNavigate }: { onNavigate: (href: RoutePath) => void })
 
 export function AppRouter() {
   const [path, setPath] = useState<RoutePath | null>(() => getCurrentPath());
+  const { products } = useProductCatalog();
 
   useEffect(() => {
     const handlePopState = () => setPath(getCurrentPath());
@@ -44,18 +45,18 @@ export function AppRouter() {
   };
 
   const renderPage = () => {
+    if (path?.startsWith('/san-pham/')) {
+      const product = products.find((item) => item.path === path);
+      return product
+        ? <ProductDetailPage product={product} onNavigate={handleNavigate} />
+        : <NotFoundPage onNavigate={handleNavigate} />;
+    }
+
     switch (path) {
       case '/':
-        return <HomePage onNavigate={handleNavigate} />;
+        return <HomePage products={products} onNavigate={handleNavigate} />;
       case '/linh-vuc-hoat-dong':
         return <AreasPage onNavigate={handleNavigate} />;
-      case '/san-pham/ban-inox':
-      case '/san-pham/ghe-inox': {
-        const product = inoxProducts.find((item) => item.path === path);
-        return product
-          ? <ProductDetailPage product={product} onNavigate={handleNavigate} />
-          : <NotFoundPage onNavigate={handleNavigate} />;
-      }
       case '/lien-he':
         return <ContactPage onNavigate={handleNavigate} />;
       default:
@@ -66,7 +67,7 @@ export function AppRouter() {
   return (
     <div className="site-shell">
       <ScrollToTop path={path ?? 'not-found'} />
-      <SiteHeader currentPath={path ?? '/'} />
+      <SiteHeader currentPath={path ?? '/'} products={products} />
       <main>{renderPage()}</main>
       <SiteFooter />
     </div>

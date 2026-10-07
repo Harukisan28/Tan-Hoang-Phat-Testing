@@ -95,6 +95,7 @@ export const inoxProducts: InoxProduct[] = [
     slug: 'ban-inox',
     path: '/san-pham/ban-inox',
     title: 'Bàn inox',
+    category: 'Sản phẩm inox',
     shortDescription: 'Bàn có bề mặt inox nhẵn, phù hợp những khu vực cần vệ sinh thường xuyên.',
     description: 'Bàn inox là lựa chọn phổ biến cho khu vực cần mặt bàn dễ lau chùi sau khi sử dụng. Thiết kế thực tế có thể được cân nhắc theo không gian, thao tác công việc và quy trình vệ sinh; thông số cụ thể cần được xác nhận theo yêu cầu từng đơn hàng.',
     highlights: [
@@ -106,11 +107,14 @@ export const inoxProducts: InoxProduct[] = [
     imageUrl: `https://images.unsplash.com/photo-1755604708691-cd9b930a56b9?auto=format&fit=crop&w=1600&q=85`,
     imageAlt: 'Bàn inox trong không gian ăn uống, ảnh của Johnny Ho trên Unsplash',
     imageCredit: 'Ảnh tham khảo: Johnny Ho / Unsplash',
+    popular: true,
+    showMaterialReferences: true,
   },
   {
     slug: 'ghe-inox',
     path: '/san-pham/ghe-inox',
     title: 'Ghế inox',
+    category: 'Sản phẩm inox',
     shortDescription: 'Ghế khung inox gọn nhẹ, dễ lau chùi và phù hợp nhiều không gian sử dụng.',
     description: 'Ghế inox có thể được lựa chọn cho khu vực cần bề mặt dễ làm sạch và sử dụng thường xuyên. Hình dáng, cấu tạo mặt ngồi và kết cấu cụ thể tùy theo phương án sản phẩm; vui lòng trao đổi để xác định cấu hình phù hợp với không gian và nhu cầu.',
     highlights: [
@@ -122,6 +126,8 @@ export const inoxProducts: InoxProduct[] = [
     imageUrl: `https://images.unsplash.com/photo-1701948866896-6bef1cdc958e?auto=format&fit=crop&w=1600&q=85`,
     imageAlt: 'Ghế khung kim loại sáng màu, ảnh của ZENG YILI trên Unsplash',
     imageCredit: 'Ảnh tham khảo: ZENG YILI / Unsplash',
+    popular: true,
+    showMaterialReferences: true,
   },
 ];
 
