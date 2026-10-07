@@ -6,43 +6,29 @@
   border: 1px solid var(--color-line);
   background: var(--color-white);
   color: var(--color-ink);
-  transition: border-color var(--motion-standard), color var(--motion-standard);
-}
-
-.card:hover,
-.card:focus-visible {
-  border-color: var(--color-gold-500);
-  color: var(--color-black);
 }
 
 .media {
   position: relative;
   aspect-ratio: 1.25 / 1;
   overflow: hidden;
-  background: #e8e6e1;
+  background: var(--color-surface);
 }
 
 .media img {
   object-fit: cover;
-  transition: filter var(--motion-standard);
-}
-
-.card:hover .media img,
-.card:focus-visible .media img {
-  filter: saturate(1.04) contrast(1.03);
 }
 
 .content {
-  position: relative;
   display: flex;
   min-height: 0;
   flex: 1;
   flex-direction: column;
   padding: 0.8rem 0.9rem 1rem;
-  border-top: 3px solid var(--color-gold-500);
+  border-top: 3px solid var(--color-green-700);
 }
 
-.content p {
+.content h3 {
   max-width: 18ch;
   margin: 0;
   color: var(--color-black);
@@ -51,25 +37,12 @@
   line-height: 1.25;
 }
 
-.content span {
+.content p {
   max-width: 26ch;
-  margin-top: 0.45rem;
+  margin: 0.45rem 0 0;
   color: var(--color-muted);
   font-size: 0.8rem;
   line-height: 1.45;
-}
-
-.arrow {
-  position: absolute;
-  right: 0.8rem;
-  bottom: 0.8rem;
-  color: var(--color-gold-500);
-  transition: transform var(--motion-standard);
-}
-
-.card:hover .arrow,
-.card:focus-visible .arrow {
-  transform: translate(3px, -3px);
 }
 
 @media (max-width: 1100px) {
@@ -80,8 +53,7 @@
 
 @media (max-width: 760px) {
   .card {
-    width: min(76vw, 17rem);
-    flex: 0 0 min(76vw, 17rem);
+    width: 100%;
   }
 
   .media {

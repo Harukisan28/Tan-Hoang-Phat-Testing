@@ -1,12 +1,11 @@
-import { companyProfile, projects, serviceAreas } from '../data/siteData';
+import { companyProfile, inoxProducts, serviceAreas } from '../data/siteData';
 import type { RouteHref } from '../types/site';
 import { RuleHeading } from '../components/sections/RuleHeading';
 import { ValuesGrid } from '../components/about/ValuesGrid';
+import { InoxProductCard } from '../components/cards/InoxProductCard';
 import { ServiceCard } from '../components/cards/ServiceCard';
 import { IdentityHero } from '../components/home/IdentityHero';
 import { ProofStrip } from '../components/home/ProofStrip';
-import { ProjectRecord } from '../components/projects/ProjectRecord';
-import { ButtonLink } from '../components/ui/ButtonLink';
 import styles from './HomePage.module.css';
 
 interface HomePageProps {
@@ -25,23 +24,22 @@ export function HomePage({ onNavigate }: HomePageProps) {
             Từ gia công chi tiết đến thi công hoàn thiện, mỗi lĩnh vực là một cách Tân Hoàng Phát biến yêu cầu kỹ thuật thành sản phẩm có giá trị sử dụng lâu dài.
           </p>
           <div className={styles.serviceRail}>
-            {serviceAreas.map((service) => <ServiceCard key={service.slug} service={service} onNavigate={onNavigate} />)}
+            {serviceAreas.map((service) => <ServiceCard key={service.slug} service={service} />)}
           </div>
         </div>
       </section>
 
-      <section className={`${styles.projectsSection} section`} aria-labelledby="projects-title">
+      <section className={`${styles.productsSection} section`} aria-labelledby="products-title">
         <div className="container">
           <div className={styles.sectionHeader}>
             <div>
-              <p className="eyebrow">Dự án tiêu biểu</p>
-              <h2 id="projects-title" className="section-heading">Những câu chuyện bắt đầu từ một yêu cầu.</h2>
-              <p className="lead">Một vài hướng triển khai tiêu biểu từ năng lực gia công, inox và thi công lắp đặt của Tân Hoàng Phát.</p>
+              <p className="eyebrow">Sản phẩm tiêu biểu</p>
+              <h2 id="products-title" className="section-heading">Bàn và ghế inox cho nhu cầu sử dụng hằng ngày.</h2>
+              <p className="lead">Tìm hiểu thông tin tham khảo về hai dòng sản phẩm inox, cách vệ sinh và những không gian sử dụng thường gặp.</p>
             </div>
-            <ButtonLink href="/du-an" variant="outline" size="small" onNavigate={onNavigate}>Xem danh mục dự án</ButtonLink>
           </div>
-          <div className={styles.projectRecords}>
-            {projects.slice(0, 3).map((project, index) => <ProjectRecord key={project.slug} project={project} index={index} onNavigate={onNavigate} />)}
+          <div className={styles.productGrid}>
+            {inoxProducts.map((product) => <InoxProductCard key={product.slug} product={product} onNavigate={onNavigate} />)}
           </div>
         </div>
       </section>

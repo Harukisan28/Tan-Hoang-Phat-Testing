@@ -50,7 +50,7 @@ export function AreasPage({ onNavigate }: AreasPageProps) {
         <div className="container">
           <div className={styles.introRow}>
             <SectionHeading eyebrow="Chọn một lĩnh vực" title="Bắt đầu từ hạng mục bạn đang cần triển khai." />
-            <p className="body-copy">Mỗi dự án có một điều kiện vận hành riêng. Chọn lĩnh vực để xem nhanh phạm vi công việc và cách Tân Hoàng Phát có thể phối hợp.</p>
+            <p className="body-copy">Mỗi yêu cầu có một điều kiện vận hành riêng. Chọn lĩnh vực để xem nhanh phạm vi công việc và cách Tân Hoàng Phát có thể phối hợp.</p>
           </div>
           <div className={styles.areaLayout}>
             <aside className={styles.sidebar} aria-label="Danh sách lĩnh vực hoạt động">

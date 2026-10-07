@@ -1,5 +1,6 @@
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 20;
   background: var(--color-black);
 }
@@ -33,13 +34,13 @@
 }
 
 .utilityLinks a:hover {
-  color: var(--color-white);
+  color: var(--color-green-100);
 }
 
 .mainBar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  background: var(--color-black);
-  color: var(--color-white);
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-white);
+  color: var(--color-ink);
 }
 
 .mainBarInner {
@@ -47,7 +48,7 @@
   min-width: 0;
   min-height: clamp(4.5rem, 6vw, 5.5rem);
   align-items: center;
-  gap: clamp(1rem, 3vw, 3rem);
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
 }
 
 .logoLink {
@@ -69,9 +70,9 @@
 
 .desktopNav {
   display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  gap: clamp(0.8rem, 2vw, 1.8rem);
+  flex: 0 1 auto;
+  justify-content: flex-start;
+  gap: clamp(0.7rem, 1.4vw, 1.25rem);
 }
 
 .navLink {
@@ -81,7 +82,7 @@
   min-width: 0;
   align-items: center;
   gap: 0.25rem;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--color-ink);
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.25;
@@ -95,7 +96,7 @@
   bottom: 0;
   left: 0;
   height: 3px;
-  background: var(--color-gold-500);
+  background: var(--color-green-700);
   content: '';
   transform: scaleX(0);
   transform-origin: right;
@@ -103,19 +104,95 @@
 }
 
 .navLink:hover,
-.navLinkActive {
-  color: var(--color-gold-300);
+.navLinkActive,
+.productsTriggerOpen {
+  color: var(--color-green-500);
 }
 
 .navLink:hover::after,
-.navLinkActive::after {
+.navLinkActive::after,
+.productsTriggerOpen::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.productsItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+  .productsTrigger {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+.productsTrigger svg {
+  flex: 0 0 auto;
+  transition: transform var(--motion-standard);
+}
+
+.productChevronOpen {
+  transform: rotate(180deg);
+}
+
+.productsDropdown {
+  position: absolute;
+  z-index: 30;
+  top: 100%;
+  left: 0;
+  display: grid;
+  width: min(19rem, calc(100vw - 2rem));
+  padding: 0.35rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+  color: var(--color-black);
+}
+
+.productsDropdown[hidden] {
+  display: none;
+}
+
+.productDropdownLink {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-ink);
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: color var(--motion-standard), background var(--motion-standard);
+}
+
+.productDropdownLink:last-child {
+  border-bottom: 0;
+}
+
+.productDropdownLink svg {
+  flex: 0 0 auto;
+  color: var(--color-green-700);
+}
+
+.productDropdownLink:hover,
+.productDropdownLink:focus-visible {
+  background: var(--color-green-100);
+  color: var(--color-green-800);
 }
 
 .desktopCta {
   display: inline-flex;
   min-height: 42px;
+  margin-left: auto;
   align-items: center;
   justify-content: center;
   padding: 0.65rem 1rem;
@@ -139,10 +216,10 @@
   width: 46px;
   height: 46px;
   margin-left: auto;
-  border: 1px solid rgba(255, 255, 255, 0.34);
+  border: 1px solid var(--color-line);
   border-radius: 2px;
-  background: transparent;
-  color: var(--color-white);
+  background: var(--color-white);
+  color: var(--color-ink);
   cursor: pointer;
 }
 
@@ -170,8 +247,8 @@
     max-height: 0;
     overflow: hidden;
     border-bottom: 1px solid transparent;
-    background: var(--color-black);
-    color: var(--color-white);
+    background: var(--color-white);
+    color: var(--color-ink);
     opacity: 0;
     pointer-events: none;
     transform: translateY(-6px);
@@ -179,28 +256,91 @@
   }
 
   .mobileNavOpen {
-    max-height: min(420px, calc(100dvh - 64px));
+    max-height: min(620px, calc(100dvh - 64px));
     overflow-y: auto;
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--color-line);
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
   }
 
-  .mobileNavLink {
+  .mobileNavLink,
+  .mobileProductsTrigger {
     display: flex;
     min-height: 54px;
     min-width: 0;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-ink);
     font-weight: 600;
   }
 
+  .mobileProductsTrigger {
+    width: 100%;
+    padding: 0;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
+  }
+
+  .mobileProductsTriggerOpen,
   .mobileNavLinkActive,
-  .mobileNavLink:hover {
-    color: var(--color-gold-300);
+  .mobileNavLink:hover,
+  .mobileProductsTrigger:hover {
+    color: var(--color-green-500);
+  }
+
+  .mobileProductsTrigger svg {
+    flex: 0 0 auto;
+    transition: transform var(--motion-standard);
+  }
+
+  .mobileProductsChevronOpen {
+    transform: rotate(180deg);
+  }
+
+  .mobileProductsDropdown {
+    display: grid;
+    padding-left: 0.65rem;
+    border-left: 2px solid var(--color-green-700);
+  }
+
+  .mobileProductsDropdown[hidden] {
+    display: none;
+  }
+
+  .mobileProductLink {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-ink);
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  .mobileProductLink:last-child {
+    border-bottom: 0;
+  }
+
+  .mobileProductLink svg {
+    flex: 0 0 auto;
+    color: var(--color-green-500);
+  }
+
+  .mobileProductLink:hover,
+  .mobileProductLink:focus-visible {
+    background: var(--color-green-100);
+    color: var(--color-green-800);
   }
 
   .mobileArrow {

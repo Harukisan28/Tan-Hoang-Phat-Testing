@@ -1,4 +1,6 @@
-export type RoutePath = '/' | '/linh-vuc-hoat-dong' | '/du-an' | '/lien-he';
+export type InoxProductSlug = 'ban-inox' | 'ghe-inox';
+export type InoxProductPath = `/san-pham/${InoxProductSlug}`;
+export type RoutePath = '/' | '/linh-vuc-hoat-dong' | '/lien-he' | InoxProductPath;
 
 export type ServiceSlug =
   | 'gia-cong-co-khi'
@@ -10,11 +12,6 @@ export type ServiceSlug =
 export type ServiceHref = `/linh-vuc-hoat-dong#${ServiceSlug}`;
 export type RouteHref = RoutePath | ServiceHref;
 
-export type ProjectCategory =
-  | 'Gia công cơ khí'
-  | 'Sản xuất theo yêu cầu'
-  | 'Thi công – lắp đặt'
-  | 'Sản phẩm inox';
 
 export interface CompanyProfile {
   name: string;
@@ -48,14 +45,23 @@ export interface ServiceArea {
   imageAlt: string;
 }
 
-export interface Project {
-  slug: string;
+
+export interface InoxProduct {
+  slug: InoxProductSlug;
+  path: InoxProductPath;
   title: string;
-  category: ProjectCategory;
-  summary: string;
-  outcome: string;
+  shortDescription: string;
+  description: string;
+  highlights: string[];
+  useCases: string[];
   imageUrl: string;
   imageAlt: string;
+  imageCredit: string;
+}
+
+export interface MaterialReference {
+  title: string;
+  url: string;
 }
 
 export interface ContactFormValues {

@@ -10,8 +10,8 @@ interface IdentityHeroProps {
 }
 
 const factoryImage = {
-  imageUrl: siteAsset('/assets/tan-hoang-phat-factory.png'),
-  imageAlt: 'Mặt tiền nhà xưởng Tân Hoàng Phát dưới bầu trời xanh',
+  imageUrl: 'https://images.pexels.com/photos/7598915/pexels-photo-7598915.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  imageAlt: 'Bồn inox công nghiệp bên trong nhà xưởng, ảnh của Daniel Dan trên Pexels',
 };
 
 export function IdentityHero({ onNavigate }: IdentityHeroProps) {
@@ -39,7 +39,6 @@ export function IdentityHero({ onNavigate }: IdentityHeroProps) {
               <p className={styles.tagline}>{companyProfile.tagline}</p>
               <p className={styles.description}>{companyProfile.description}</p>
               <div className={styles.actions}>
-                <ButtonLink href="/linh-vuc-hoat-dong" onNavigate={onNavigate}>Khám phá năng lực</ButtonLink>
                 <ButtonLink href="/lien-he" variant="outline" onNavigate={onNavigate}>Liên hệ tư vấn</ButtonLink>
               </div>
             </div>

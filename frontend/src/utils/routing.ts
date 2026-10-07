@@ -11,8 +11,9 @@ const serviceSlugs: readonly ServiceSlug[] = [
 export const isRoutePath = (value: string): value is RoutePath =>
   value === '/' ||
   value === '/linh-vuc-hoat-dong' ||
-  value === '/du-an' ||
-  value === '/lien-he';
+  value === '/lien-he' ||
+  value === '/san-pham/ban-inox' ||
+  value === '/san-pham/ghe-inox';
 
 export const isServiceSlug = (value: string): value is ServiceSlug =>
   serviceSlugs.includes(value as ServiceSlug);

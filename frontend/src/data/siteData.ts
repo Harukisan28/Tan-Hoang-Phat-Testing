@@ -1,4 +1,4 @@
-import type { CompanyProfile, NavItem, Project, ServiceArea, ValueItem } from '../types/site';
+import type { CompanyProfile, InoxProduct, MaterialReference, NavItem, ServiceArea, ValueItem } from '../types/site';
 
 export const companyProfile: CompanyProfile = {
   name: 'Tân Hoàng Phát',
@@ -14,8 +14,6 @@ export const companyProfile: CompanyProfile = {
 
 export const navItems: NavItem[] = [
   { label: 'Trang chủ', href: '/' },
-  { label: 'Lĩnh vực hoạt động', href: '/linh-vuc-hoat-dong' },
-  { label: 'Dự án', href: '/du-an' },
   { label: 'Liên hệ', href: '/lien-he' },
 ];
 
@@ -86,47 +84,59 @@ export const serviceAreas: ServiceArea[] = [
     title: 'Cung cấp vật tư cơ khí',
     shortTitle: 'Vật tư cơ khí',
     summary: 'Vật tư cơ khí, phụ kiện và chi tiết phục vụ sản xuất chất lượng cao.',
-    bullets: ['Lựa chọn chủng loại phù hợp', 'Nguồn vật tư rõ ràng', 'Hỗ trợ theo nhu cầu dự án'],
+    bullets: ['Lựa chọn chủng loại phù hợp', 'Nguồn vật tư rõ ràng', 'Hỗ trợ theo nhu cầu thực tế'],
     imageUrl: `https://images.pexels.com/photos/12951626/pexels-photo-12951626.jpeg${imageParams}`,
     imageAlt: 'Các chi tiết cơ khí chính xác được sắp xếp trên bàn, ảnh của Alex Urezkov trên Pexels',
   },
 ];
 
-export const projects: Project[] = [
+export const inoxProducts: InoxProduct[] = [
   {
-    slug: 'he-thong-inox-theo-yeu-cau',
-    title: 'Hệ thống inox theo yêu cầu',
-    category: 'Sản xuất theo yêu cầu',
-    summary: 'Từ bản vẽ đến sản phẩm hoàn thiện, tối ưu cho không gian sản xuất và vệ sinh công nghiệp.',
-    outcome: 'Tập trung vào độ bền, tính đồng bộ và khả năng vận hành lâu dài.',
-    imageUrl: `https://images.pexels.com/photos/7598915/pexels-photo-7598915.jpeg${imageParams}`,
-    imageAlt: 'Thiết bị inox trong xưởng sản xuất, ảnh của Daniel Dan trên Pexels',
+    slug: 'ban-inox',
+    path: '/san-pham/ban-inox',
+    title: 'Bàn inox',
+    shortDescription: 'Bàn có bề mặt inox nhẵn, phù hợp những khu vực cần vệ sinh thường xuyên.',
+    description: 'Bàn inox là lựa chọn phổ biến cho khu vực cần mặt bàn dễ lau chùi sau khi sử dụng. Thiết kế thực tế có thể được cân nhắc theo không gian, thao tác công việc và quy trình vệ sinh; thông số cụ thể cần được xác nhận theo yêu cầu từng đơn hàng.',
+    highlights: [
+      'Bề mặt inox không xốp, thuận tiện lau chùi theo quy trình phù hợp.',
+      'Kiểu dáng, kết cấu và kích thước cần chọn theo mục đích sử dụng thực tế.',
+      'Mức độ phù hợp với môi trường phụ thuộc vào chủng loại inox, gia công và cách bảo quản.',
+    ],
+    useCases: ['Bếp ăn và căn tin', 'Khu sơ chế, chế biến thực phẩm', 'Không gian dịch vụ cần lau chùi thường xuyên'],
+    imageUrl: `https://images.unsplash.com/photo-1755604708691-cd9b930a56b9?auto=format&fit=crop&w=1600&q=85`,
+    imageAlt: 'Bàn inox trong không gian ăn uống, ảnh của Johnny Ho trên Unsplash',
+    imageCredit: 'Ảnh tham khảo: Johnny Ho / Unsplash',
   },
   {
-    slug: 'gia-cong-chi-tiet-co-khi',
-    title: 'Gia công chi tiết cơ khí',
-    category: 'Gia công cơ khí',
-    summary: 'Gia công các chi tiết kim loại với quy trình kiểm soát rõ ràng theo yêu cầu kỹ thuật.',
-    outcome: 'Bề mặt hoàn thiện tốt, kích thước ổn định và sẵn sàng lắp ráp.',
-    imageUrl: `https://images.pexels.com/photos/7254419/pexels-photo-7254419.jpeg${imageParams}`,
-    imageAlt: 'Tia lửa trong quá trình cắt kim loại bằng laser, ảnh của Opt Lasers from Poland trên Pexels',
-  },
-  {
-    slug: 'khong-gian-san-xuat-cong-nghiep',
-    title: 'Thi công không gian sản xuất',
-    category: 'Thi công – lắp đặt',
-    summary: 'Kết hợp hạng mục cơ khí, kệ và hệ thống phụ trợ để tạo nên không gian làm việc hiệu quả.',
-    outcome: 'Thiết kế linh hoạt, thi công gọn gàng và bám sát điều kiện thực tế.',
-    imageUrl: `https://images.pexels.com/photos/5532845/pexels-photo-5532845.jpeg${imageParams}`,
-    imageAlt: 'Dây chuyền và thiết bị trong nhà xưởng, ảnh của cottonbro studio trên Pexels',
-  },
-  {
-    slug: 'vat-tu-cho-day-chuyen',
-    title: 'Vật tư cho dây chuyền',
-    category: 'Sản phẩm inox',
-    summary: 'Cung cấp các chi tiết và phụ kiện cơ khí hỗ trợ dây chuyền vận hành ổn định.',
-    outcome: 'Đồng bộ vật tư, tiết kiệm thời gian phối hợp và bảo trì.',
-    imageUrl: `https://images.pexels.com/photos/12951626/pexels-photo-12951626.jpeg${imageParams}`,
-    imageAlt: 'Các chi tiết cơ khí chính xác trên bàn làm việc, ảnh của Alex Urezkov trên Pexels',
+    slug: 'ghe-inox',
+    path: '/san-pham/ghe-inox',
+    title: 'Ghế inox',
+    shortDescription: 'Ghế khung inox gọn nhẹ, dễ lau chùi và phù hợp nhiều không gian sử dụng.',
+    description: 'Ghế inox có thể được lựa chọn cho khu vực cần bề mặt dễ làm sạch và sử dụng thường xuyên. Hình dáng, cấu tạo mặt ngồi và kết cấu cụ thể tùy theo phương án sản phẩm; vui lòng trao đổi để xác định cấu hình phù hợp với không gian và nhu cầu.',
+    highlights: [
+      'Bề mặt inox không xốp, có thể lau chùi và khử trùng theo hướng dẫn phù hợp.',
+      'Thiết kế nên ưu tiên các vị trí dễ tiếp cận khi vệ sinh.',
+      'Cấu hình vật liệu và kết cấu cần xác nhận theo mẫu và yêu cầu thực tế.',
+    ],
+    useCases: ['Căn tin và khu vực ăn uống', 'Khu vực chờ, sảnh và không gian dịch vụ', 'Không gian cần vệ sinh định kỳ'],
+    imageUrl: `https://images.unsplash.com/photo-1701948866896-6bef1cdc958e?auto=format&fit=crop&w=1600&q=85`,
+    imageAlt: 'Ghế khung kim loại sáng màu, ảnh của ZENG YILI trên Unsplash',
+    imageCredit: 'Ảnh tham khảo: ZENG YILI / Unsplash',
   },
 ];
+
+export const materialReferences: MaterialReference[] = [
+  {
+    title: 'World Stainless — Stainless Steel in Hygienic Applications',
+    url: 'https://worldstainless.org/wp-content/uploads/2025/02/Stainless_Steel_in_Hygienic_Applications_English.pdf',
+  },
+  {
+    title: 'CDC — Best Practices for Environmental Cleaning',
+    url: 'https://www.cdc.gov/healthcare-associated-infections/media/pdfs/environmental-cleaning-rls-508.pdf',
+  },
+  {
+    title: 'Texas DSHS — Clean-up of Bodily Fluids',
+    url: 'https://www.dshs.texas.gov/sites/default/files/foodestablishments/pdf/GuidanceDocs/Clean-up-of-Bodily-Fluids.pdf',
+  },
+];
+
