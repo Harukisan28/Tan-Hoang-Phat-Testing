@@ -6,7 +6,7 @@
 .visual {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 9 / 4;
   overflow: hidden;
   background: var(--color-green-100);
 }
