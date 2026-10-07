@@ -179,7 +179,7 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                           }
                         }}
                       >
-                        Sản phẩm gia dụng
+                        Sản phẩm
                         <ChevronDown aria-hidden="true" size={14} className={isDesktopProductsOpen ? styles.productChevronOpen : ''} />
                       </button>
                       <div id="featured-products-dropdown" className={styles.productsDropdown} role="group" aria-label="Danh mục sản phẩm gia dụng" hidden={!isDesktopProductsOpen}>
@@ -264,7 +264,7 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                       setActiveMobileCategory(null);
                     }}
                   >
-                    <span>Sản phẩm gia dụng</span>
+                    <span>Sản phẩm</span>
                     <ChevronDown aria-hidden="true" size={16} className={isMobileProductsOpen ? styles.mobileProductsChevronOpen : ''} />
                   </button>
                   <div id="mobile-featured-products-dropdown" className={styles.mobileProductsDropdown} hidden={!isMobileProductsOpen}>
