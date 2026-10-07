@@ -26,6 +26,7 @@ export function HomePage({ products, onNavigate }: HomePageProps) {
       category,
       products: categoryProducts.slice(0, PRODUCTS_PER_CATEGORY),
     }));
+  const categoryPreviewProducts = productCategories.flatMap(({ products: categoryProducts }) => categoryProducts);
 
   return (
     <>
@@ -69,14 +70,11 @@ export function HomePage({ products, onNavigate }: HomePageProps) {
               <p className="lead">Khám phá đầy đủ các sản phẩm được sắp xếp theo danh mục.</p>
             </div>
           </div>
-          {productCategories.length > 0 ? productCategories.map(({ category, products: categoryProducts }) => (
-            <section className={styles.categoryGroup} key={category} aria-label={category}>
-              <h3 className={styles.categoryTitle}>{category}</h3>
-              <div className={styles.productGrid}>
-                {categoryProducts.map((product) => <InoxProductCard key={product.slug} product={product} onNavigate={onNavigate} />)}
-              </div>
-            </section>
-          )) : (
+          {categoryPreviewProducts.length > 0 ? (
+            <div className={styles.productGrid}>
+              {categoryPreviewProducts.map((product) => <InoxProductCard key={product.slug} product={product} onNavigate={onNavigate} />)}
+            </div>
+          ) : (
             <p className={styles.emptyProducts}>Danh mục sản phẩm đang được cập nhật.</p>
           )}
         </div>
