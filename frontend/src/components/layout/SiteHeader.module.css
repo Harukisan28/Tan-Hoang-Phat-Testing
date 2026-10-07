@@ -148,8 +148,10 @@
   top: 100%;
   left: 0;
   display: grid;
-  width: min(19rem, calc(100vw - 2rem));
-  padding: 0.35rem;
+  grid-template-columns: minmax(9rem, 0.9fr) minmax(0, 1.3fr);
+  width: min(32rem, calc(100vw - 2rem));
+  max-height: min(70vh, 30rem);
+  overflow: hidden;
   border: 1px solid var(--color-line);
   background: var(--color-white);
   box-shadow: var(--shadow-card);
@@ -158,6 +160,74 @@
 
 .productsDropdown[hidden] {
   display: none;
+}
+
+.productCategoryList {
+  min-width: 0;
+  overflow-y: auto;
+  padding: 0.35rem;
+  border-right: 1px solid var(--color-line);
+}
+
+.productCategoryButton {
+  display: flex;
+  width: 100%;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  padding: 0.65rem 0.7rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-line);
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: left;
+  transition: color var(--motion-standard), background var(--motion-standard);
+}
+
+.productCategoryButton:last-child {
+  border-bottom: 0;
+}
+
+.productCategoryButton svg {
+  flex: 0 0 auto;
+  color: var(--color-green-700);
+}
+
+.productCategoryButton:hover,
+.productCategoryButton:focus-visible,
+.productCategoryButtonActive {
+  background: var(--color-green-100);
+  color: var(--color-green-800);
+}
+
+.productsCategoryPanel {
+  min-width: 0;
+  overflow-y: auto;
+  padding: 0.4rem;
+}
+
+.productsCategoryHeading {
+  margin: 0;
+  padding: 0.65rem 0.7rem 0.45rem;
+  color: var(--color-green-800);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.productsSubmenu {
+  display: grid;
+}
+
+.productsCategoryEmpty {
+  margin: 0;
+  padding: 0.7rem;
+  color: var(--color-muted);
+  font-size: 0.86rem;
 }
 
 .productDropdownLink {
@@ -305,14 +375,54 @@
     transform: rotate(180deg);
   }
 
-  .mobileProductsDropdown {
+.mobileProductsDropdown {
     display: grid;
+    max-height: min(48vh, 22rem);
+    overflow-y: auto;
     padding-left: 0.65rem;
     border-left: 2px solid var(--color-green-700);
   }
 
-  .mobileProductsDropdown[hidden] {
+  .mobileProductsDropdown[hidden],
+  .mobileCategoryProducts[hidden] {
     display: none;
+  }
+
+  .mobileCategoryButton {
+    display: flex;
+    width: 100%;
+    min-height: 46px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+    padding: 0.6rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid var(--color-line);
+    background: transparent;
+    color: var(--color-ink);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .mobileCategoryButton svg {
+    flex: 0 0 auto;
+    color: var(--color-green-700);
+    transition: transform var(--motion-standard);
+  }
+
+  .mobileCategoryButtonActive,
+  .mobileCategoryButton:hover,
+  .mobileCategoryButton:focus-visible {
+    color: var(--color-green-800);
+  }
+
+  .mobileCategoryProducts {
+    display: grid;
+    padding-left: 0.6rem;
+    border-left: 1px solid var(--color-line);
   }
 
   .mobileProductLink {

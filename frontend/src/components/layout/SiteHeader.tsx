@@ -1,6 +1,7 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ChevronDown, Mail, Menu, PhoneCall, X } from 'lucide-react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowUpRight, ChevronDown, ChevronRight, Mail, Menu, PhoneCall, X } from 'lucide-react';
 import { companyProfile, navItems } from '../../data/siteData';
+import { groupProductsByCategory } from '../../data/productCatalog';
 import type { InoxProduct, RouteHref, RoutePath } from '../../types/site';
 import { navigateTo, siteAsset, siteHref } from '../../utils/routing';
 import styles from './SiteHeader.module.css';
@@ -14,11 +15,15 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+  const [activeDesktopCategory, setActiveDesktopCategory] = useState<string | null>(null);
+  const [activeMobileCategory, setActiveMobileCategory] = useState<string | null>(null);
   const menuPanelRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const desktopProductsRef = useRef<HTMLDivElement>(null);
   const desktopProductsTriggerRef = useRef<HTMLButtonElement>(null);
   const skipProductsOpenOnFocusRef = useRef(false);
+  const productCategories = useMemo(() => groupProductsByCategory(products), [products]);
+  const desktopCategory = productCategories.find(({ category }) => category === activeDesktopCategory) ?? null;
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -30,6 +35,7 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
       if (event.key === 'Escape') {
         setIsMenuOpen(false);
         setIsMobileProductsOpen(false);
+        setActiveMobileCategory(null);
         menuButtonRef.current?.focus();
       }
     };
@@ -38,6 +44,7 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
       if (menuPanelRef.current?.contains(event.target as Node) || menuButtonRef.current?.contains(event.target as Node)) return;
       setIsMenuOpen(false);
       setIsMobileProductsOpen(false);
+      setActiveMobileCategory(null);
       menuButtonRef.current?.focus();
     };
 
@@ -56,6 +63,7 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
       if (event.key === 'Escape') {
         skipProductsOpenOnFocusRef.current = document.activeElement !== desktopProductsTriggerRef.current;
         setIsDesktopProductsOpen(false);
+        setActiveDesktopCategory(null);
         desktopProductsTriggerRef.current?.focus();
       }
     };
@@ -63,6 +71,7 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
     const handlePointerDown = (event: PointerEvent) => {
       if (!desktopProductsRef.current?.contains(event.target as Node)) {
         setIsDesktopProductsOpen(false);
+        setActiveDesktopCategory(null);
       }
     };
 
@@ -74,16 +83,22 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
     };
   }, [isDesktopProductsOpen]);
 
+  const openDesktopProducts = () => {
+    setIsDesktopProductsOpen(true);
+  };
+
   const handleNavigate = (href: RouteHref) => {
     const shouldReturnFocus = isMenuOpen;
     setIsMenuOpen(false);
     setIsDesktopProductsOpen(false);
     setIsMobileProductsOpen(false);
+    setActiveDesktopCategory(null);
+    setActiveMobileCategory(null);
     if (shouldReturnFocus) menuButtonRef.current?.focus();
     navigateTo(href);
   };
 
-  const renderProductLinks = (className: string, tabIndex?: number) => products.map((product) => {
+  const renderProductLinks = (className: string, categoryProducts: InoxProduct[], tabIndex?: number) => categoryProducts.map((product) => {
     const href = product.path;
     return (
       <a
@@ -128,19 +143,25 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                     <div
                       ref={desktopProductsRef}
                       className={styles.productsItem}
-                      onMouseEnter={() => setIsDesktopProductsOpen(true)}
+                      onMouseEnter={openDesktopProducts}
                       onMouseLeave={(event) => {
-                        if (!event.currentTarget.contains(document.activeElement)) setIsDesktopProductsOpen(false);
+                        if (!event.currentTarget.contains(document.activeElement)) {
+                          setIsDesktopProductsOpen(false);
+                          setActiveDesktopCategory(null);
+                        }
                       }}
                       onFocusCapture={() => {
                         if (skipProductsOpenOnFocusRef.current) {
                           skipProductsOpenOnFocusRef.current = false;
                           return;
                         }
-                        setIsDesktopProductsOpen(true);
+                        openDesktopProducts();
                       }}
                       onBlur={(event) => {
-                        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsDesktopProductsOpen(false);
+                        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                          setIsDesktopProductsOpen(false);
+                          setActiveDesktopCategory(null);
+                        }
                       }}
                     >
                       <button
@@ -149,13 +170,46 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                         type="button"
                         aria-expanded={isDesktopProductsOpen}
                         aria-controls="featured-products-dropdown"
-                        onClick={() => setIsDesktopProductsOpen(true)}
+                        onClick={() => {
+                          if (isDesktopProductsOpen) {
+                            setIsDesktopProductsOpen(false);
+                            setActiveDesktopCategory(null);
+                          } else {
+                            openDesktopProducts();
+                          }
+                        }}
                       >
-                        Sản phẩm tiêu biểu
+                        Sản phẩm gia dụng
                         <ChevronDown aria-hidden="true" size={14} className={isDesktopProductsOpen ? styles.productChevronOpen : ''} />
                       </button>
-                      <div id="featured-products-dropdown" className={styles.productsDropdown} role="group" aria-label="Sản phẩm tiêu biểu" hidden={!isDesktopProductsOpen}>
-                        {renderProductLinks(styles.productDropdownLink)}
+                      <div id="featured-products-dropdown" className={styles.productsDropdown} role="group" aria-label="Danh mục sản phẩm gia dụng" hidden={!isDesktopProductsOpen}>
+                        <div className={styles.productCategoryList} aria-label="Danh mục sản phẩm">
+                          {productCategories.map((category) => (
+                            <button
+                              key={category.category}
+                              className={`${styles.productCategoryButton} ${desktopCategory?.category === category.category ? styles.productCategoryButtonActive : ''}`}
+                              type="button"
+                              aria-expanded={desktopCategory?.category === category.category}
+                              aria-controls="featured-category-products-panel"
+                              onMouseEnter={() => setActiveDesktopCategory(category.category)}
+                              onFocus={() => setActiveDesktopCategory(category.category)}
+                              onClick={() => setActiveDesktopCategory(category.category)}
+                            >
+                              <span>{category.category}</span>
+                              <ChevronRight aria-hidden="true" size={15} />
+                            </button>
+                          ))}
+                        </div>
+                        <div id="featured-category-products-panel" className={styles.productsCategoryPanel} role="group" aria-label={desktopCategory ? `Sản phẩm: ${desktopCategory.category}` : 'Sản phẩm trong danh mục'}>
+                          {desktopCategory ? (
+                            <>
+                              <p className={styles.productsCategoryHeading}>{desktopCategory.category}</p>
+                              <div className={styles.productsSubmenu}>
+                                {renderProductLinks(styles.productDropdownLink, desktopCategory.products)}
+                              </div>
+                            </>
+                          ) : <p className={styles.productsCategoryEmpty}>Di chuột hoặc chọn danh mục để xem sản phẩm.</p>}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -181,7 +235,10 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               onClick={() => {
-                if (isMenuOpen) setIsMobileProductsOpen(false);
+                if (isMenuOpen) {
+                  setIsMobileProductsOpen(false);
+                  setActiveMobileCategory(null);
+                }
                 setIsMenuOpen((open) => !open);
               }}
             >
@@ -202,13 +259,37 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                     tabIndex={isMenuOpen ? 0 : -1}
                     aria-expanded={isMobileProductsOpen}
                     aria-controls="mobile-featured-products-dropdown"
-                    onClick={() => setIsMobileProductsOpen((open) => !open)}
+                    onClick={() => {
+                      setIsMobileProductsOpen((open) => !open);
+                      setActiveMobileCategory(null);
+                    }}
                   >
-                    <span>Sản phẩm tiêu biểu</span>
+                    <span>Sản phẩm gia dụng</span>
                     <ChevronDown aria-hidden="true" size={16} className={isMobileProductsOpen ? styles.mobileProductsChevronOpen : ''} />
                   </button>
                   <div id="mobile-featured-products-dropdown" className={styles.mobileProductsDropdown} hidden={!isMobileProductsOpen}>
-                    {renderProductLinks(styles.mobileProductLink, isMenuOpen && isMobileProductsOpen ? 0 : -1)}
+                    {productCategories.map((category) => {
+                      const categoryId = `mobile-category-products-${productCategories.indexOf(category)}`;
+                      const isCategoryOpen = activeMobileCategory === category.category;
+                      return (
+                        <div className={styles.mobileCategory} key={category.category}>
+                          <button
+                            className={`${styles.mobileCategoryButton} ${isCategoryOpen ? styles.mobileCategoryButtonActive : ''}`}
+                            type="button"
+                            tabIndex={isMenuOpen && isMobileProductsOpen ? 0 : -1}
+                            aria-expanded={isCategoryOpen}
+                            aria-controls={categoryId}
+                            onClick={() => setActiveMobileCategory((active) => active === category.category ? null : category.category)}
+                          >
+                            <span>{category.category}</span>
+                            <ChevronDown aria-hidden="true" size={15} className={isCategoryOpen ? styles.mobileProductsChevronOpen : ''} />
+                          </button>
+                          <div id={categoryId} className={styles.mobileCategoryProducts} hidden={!isCategoryOpen}>
+                            {renderProductLinks(styles.mobileProductLink, category.products, isMenuOpen && isCategoryOpen ? 0 : -1)}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
