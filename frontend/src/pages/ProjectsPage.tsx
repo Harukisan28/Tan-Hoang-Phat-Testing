@@ -15,13 +15,12 @@ export function ProjectsPage({ onNavigate }: ProjectsPageProps) {
   return (
     <>
       <PageHero
-        eyebrow="Dự án & năng lực"
         title="Mỗi công trình là một bài toán đáng để làm tốt."
         description="Khám phá những hướng triển khai tiêu biểu từ gia công cơ khí, sản phẩm inox và thi công không gian sản xuất."
         currentLabel="Dự án"
         onNavigate={onNavigate}
       >
-        <div className={styles.heroMark}><Layers3 aria-hidden="true" size={26} /><span>Hồ sơ<br />dự án</span></div>
+        <div className={styles.heroMark}><Layers3 aria-hidden="true" size={24} /><span>Hồ sơ<br />dự án</span></div>
       </PageHero>
 
       <section className="section">

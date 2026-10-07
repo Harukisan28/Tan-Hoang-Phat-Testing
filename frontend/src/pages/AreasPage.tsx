@@ -37,7 +37,6 @@ export function AreasPage({ onNavigate }: AreasPageProps) {
   return (
     <>
       <PageHero
-        eyebrow="Lĩnh vực hoạt động"
         title="Năng lực cơ khí được tổ chức thành giải pháp."
         description="Từ gia công chi tiết đến thi công hoàn thiện, Tân Hoàng Phát cung cấp những năng lực có thể kết nối theo yêu cầu của từng công trình."
         currentLabel="Lĩnh vực hoạt động"

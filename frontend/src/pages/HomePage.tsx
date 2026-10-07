@@ -18,17 +18,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
     <>
       <IdentityHero onNavigate={onNavigate} />
 
-      <section className={styles.valuesSection} aria-labelledby="core-values-title">
-        <div className="container">
-          <h2 id="core-values-title">GIÁ TRỊ CỐT LÕI</h2>
-          <ValuesGrid dark />
-        </div>
-      </section>
-
       <section className={`${styles.servicesSection} section`} aria-labelledby="services-title">
         <div className="container">
-          <RuleHeading title="LĨNH VỰC HOẠT ĐỘNG" />
-          <p id="services-title" className={styles.serviceIntro}>
+          <RuleHeading id="services-title" title="LĨNH VỰC HOẠT ĐỘNG" />
+          <p className={styles.serviceIntro}>
             Từ gia công chi tiết đến thi công hoàn thiện, mỗi lĩnh vực là một cách Tân Hoàng Phát biến yêu cầu kỹ thuật thành sản phẩm có giá trị sử dụng lâu dài.
           </p>
           <div className={styles.serviceRail}>
@@ -50,6 +43,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <div className={styles.projectRecords}>
             {projects.slice(0, 3).map((project, index) => <ProjectRecord key={project.slug} project={project} index={index} onNavigate={onNavigate} />)}
           </div>
+        </div>
+      </section>
+
+      <section className={styles.valuesSection} aria-labelledby="core-values-title">
+        <div className="container">
+          <h2 id="core-values-title">GIÁ TRỊ CỐT LÕI</h2>
+          <ValuesGrid dark />
         </div>
       </section>
 

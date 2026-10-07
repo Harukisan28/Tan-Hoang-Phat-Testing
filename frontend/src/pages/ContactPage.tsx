@@ -13,7 +13,6 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
   return (
     <>
       <PageHero
-        eyebrow="Liên hệ Tân Hoàng Phát"
         title="Cùng bắt đầu từ một cuộc trao đổi rõ ràng."
         description="Bạn đang có một bản vẽ, một yêu cầu gia công hoặc một hạng mục cần triển khai? Hãy gửi thông tin để chúng tôi có cơ hội đồng hành."
         currentLabel="Liên hệ"

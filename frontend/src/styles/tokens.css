@@ -1,29 +1,40 @@
 :root {
-  --font-heading: 'Noto Sans', Arial, Helvetica, sans-serif;
-  --font-body: 'Roboto', 'Noto Sans', Arial, Helvetica, sans-serif;
+  --font-heading: 'Quicksand', Arial, Helvetica, sans-serif;
+  --font-body: 'Quicksand', Arial, Helvetica, sans-serif;
   --font-sans: var(--font-body);
-  --font-weight-body: 400;
-  --font-weight-heading: 900;
-  --color-navy-950: #0b1d2d;
-  --color-navy-900: #102c46;
-  --color-navy-700: #1d4662;
+  --font-weight-body: 500;
+  --font-weight-heading: 700;
+
+  --color-black: #080808;
+  --color-ink: #171717;
+  --color-muted: #5b5b5b;
+  --color-white: #ffffff;
+  --color-surface: #f6faf7;
+  --color-line: #dce8df;
   --color-green-800: #0d5a3b;
   --color-green-700: #0e7a4b;
+  --color-green-600: #0b6840;
   --color-green-500: #40a85a;
-  --color-orange-500: #ef7d2d;
-  --color-orange-300: #f5a45b;
-  --color-ink: #14202b;
-  --color-muted: #63717a;
-  --color-surface: #f4f7f4;
-  --color-line: #d9e4de;
-  --color-white: #ffffff;
+  --color-green-300: #a9d8b4;
+  --color-green-100: #eaf5ed;
   --color-danger: #b42318;
+
+  /* Legacy accent names map to the company green for existing component styles. */
+  --color-gold-500: var(--color-green-700);
+  --color-gold-300: var(--color-green-500);
+  --color-gold-100: var(--color-green-100);
+
+  /* Compatibility aliases keep component modules on the shared monochrome palette. */
+  --color-navy-950: var(--color-black);
+  --color-navy-900: #242424;
+  --color-navy-700: #4a4a4a;
+
   --content-max: 1200px;
-  --section-space: clamp(4.5rem, 9vw, 8rem);
-  --radius-card: 20px;
-  --radius-button: 999px;
-  --shadow-card: 0 18px 42px rgba(11, 29, 45, 0.12);
-  --shadow-soft: 0 12px 34px rgba(11, 29, 45, 0.08);
-  --focus-ring: 0 0 0 3px rgba(64, 168, 90, 0.35);
-  --motion-standard: 220ms ease;
+  --section-space: clamp(3rem, 6vw, 5.5rem);
+  --radius-card: 4px;
+  --radius-button: 4px;
+  --shadow-card: 0 5px 18px rgba(8, 8, 8, 0.08);
+  --shadow-soft: 0 3px 14px rgba(8, 8, 8, 0.06);
+  --focus-ring: 0 0 0 3px rgba(14, 122, 75, 0.32);
+  --motion-standard: 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }

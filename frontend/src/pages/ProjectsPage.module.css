@@ -1,25 +1,25 @@
 .heroMark {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 1.2rem 0 1.2rem 1.2rem;
-  border-left: 3px solid var(--color-green-700);
-  color: var(--color-green-700);
+  gap: 0.7rem;
+  padding: 0.8rem 0 0.8rem 1rem;
+  border-left: 2px solid var(--color-gold-500);
+  color: var(--color-gold-500);
 }
 
 .heroMark span {
   color: var(--color-muted);
-  font-size: 0.8rem;
-  font-weight: 800;
-  line-height: 1.3;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .introGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr);
-  gap: clamp(2rem, 8vw, 8rem);
+  gap: clamp(1.5rem, 5vw, 5rem);
   align-items: end;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
 }
 
 .introGrid > * {
@@ -35,25 +35,17 @@
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   min-width: 0;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
   overflow: hidden;
-  border-radius: var(--radius-card);
-  background: var(--color-navy-950);
+  background: var(--color-black);
   color: var(--color-white);
 }
 
 .featuredMedia {
   position: relative;
-  min-height: clamp(18rem, 34vw, 26rem);
+  min-height: clamp(18rem, 32vw, 25rem);
   aspect-ratio: 4 / 3;
   overflow: hidden;
-}
-
-.featuredMedia::after {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 50%, rgba(11, 29, 45, 0.22));
-  content: '';
 }
 
 .featuredMedia img {
@@ -65,13 +57,13 @@
 .featuredMedia span {
   position: absolute;
   z-index: 1;
-  top: 1.5rem;
-  left: 1.5rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--color-orange-500);
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 0.65rem;
+  background: var(--color-green-700);
   color: var(--color-white);
-  font-size: 0.72rem;
-  font-weight: 800;
+  font-size: 0.74rem;
+  font-weight: 700;
 }
 
 .featuredCopy {
@@ -79,46 +71,46 @@
   min-width: 0;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(2rem, 5vw, 4.5rem);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .featuredCopy :global(.eyebrow) {
-  color: var(--color-orange-300);
+  color: var(--color-gold-300);
 }
 
 .featuredCopy h2 {
-  max-width: 12ch;
+  max-width: 14ch;
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.6rem);
-  font-weight: var(--font-weight-heading);
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  color: var(--color-white);
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
 }
 
 .featuredCopy > p:not(:global(.eyebrow)) {
-  max-width: 38ch;
-  margin: 1.2rem 0 0;
-  color: rgba(255, 255, 255, 0.72);
+  max-width: 42ch;
+  margin: 0.85rem 0 0;
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .featuredNote {
   display: grid;
   gap: 0.2rem;
-  margin: 2rem 0;
-  padding: 0.9rem 0 0.9rem 1rem;
-  border-left: 2px solid var(--color-green-500);
+  margin: 1.35rem 0;
+  padding: 0.75rem 0 0.75rem 0.9rem;
+  border-left: 2px solid var(--color-gold-500);
 }
 
 .featuredNote strong {
-  color: var(--color-green-500);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: var(--color-gold-300);
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
 }
 
 .featuredNote span {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.88rem;
 }
 
 .textAction {
@@ -129,9 +121,9 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--color-orange-300);
+  color: var(--color-gold-300);
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .textAction:hover {
@@ -141,7 +133,7 @@
 .grid {
   display: grid;
   min-width: 0;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .grid > * {
@@ -154,12 +146,27 @@
   }
 
   .featuredMedia {
-    min-height: clamp(14rem, 56vw, 22rem);
+    min-height: clamp(14rem, 52vw, 21rem);
     aspect-ratio: 16 / 9;
+  }
+
+  .featuredCopy h2 {
+    max-width: none;
   }
 
   .introGrid {
     grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .featuredCopy {
+    padding: 1.15rem;
+  }
+
+  .featuredNote {
+    margin-block: 1rem;
   }
 }
 

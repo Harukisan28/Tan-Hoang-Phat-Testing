@@ -4,7 +4,6 @@ import { ButtonLink } from '../ui/ButtonLink';
 import styles from './PageHero.module.css';
 
 interface PageHeroProps {
-  eyebrow: string;
   title: string;
   description: string;
   currentLabel: string;
@@ -14,7 +13,6 @@ interface PageHeroProps {
 }
 
 export function PageHero({
-  eyebrow,
   title,
   description,
   currentLabel,
@@ -33,12 +31,11 @@ export function PageHero({
           <span>{currentLabel}</span>
         </div>
         <div className={styles.inner}>
-          <div className="reveal">
-            <p className="eyebrow">{eyebrow}</p>
+          <div>
             <h1 className="page-title">{title}</h1>
             <p className="lead">{description}</p>
           </div>
-          {children && <div className={`${styles.aside} reveal delay-2`}>{children}</div>}
+          {children && <div className={styles.aside}>{children}</div>}
         </div>
       </div>
     </section>
