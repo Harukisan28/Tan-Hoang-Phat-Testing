@@ -9,14 +9,23 @@ import { IdentityHero } from '../components/home/IdentityHero';
 import { ProofStrip } from '../components/home/ProofStrip';
 import styles from './HomePage.module.css';
 
+const MAX_POPULAR_PRODUCTS = 5;
+const MAX_PRODUCT_CATEGORIES = 5;
+const PRODUCTS_PER_CATEGORY = 1;
+
 interface HomePageProps {
   products: InoxProduct[];
   onNavigate: (href: RouteHref) => void;
 }
 
 export function HomePage({ products, onNavigate }: HomePageProps) {
-  const popularProducts = products.filter((product) => product.popular);
-  const productCategories = groupProductsByCategory(products);
+  const popularProducts = products.filter((product) => product.popular).slice(0, MAX_POPULAR_PRODUCTS);
+  const productCategories = groupProductsByCategory(products)
+    .slice(0, MAX_PRODUCT_CATEGORIES)
+    .map(({ category, products: categoryProducts }) => ({
+      category,
+      products: categoryProducts.slice(0, PRODUCTS_PER_CATEGORY),
+    }));
 
   return (
     <>
