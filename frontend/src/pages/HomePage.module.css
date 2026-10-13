@@ -67,7 +67,7 @@
 .productGrid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(1rem, 2.5vw, 2rem);
+  gap: 1rem;
 }
 
 .productGrid > * {

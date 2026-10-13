@@ -10,7 +10,7 @@
 
 .media {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 11.5;
   overflow: hidden;
   background: var(--color-surface);
 }
@@ -21,7 +21,7 @@
 
 .content {
   display: flex;
-  min-height: 0;
+  min-height: 8.5rem;
   flex: 1;
   flex-direction: column;
   padding: 0.65rem 0.7rem 0.75rem;
@@ -51,7 +51,7 @@
 
 @media (max-width: 1100px) {
   .content {
-    min-height: 5.75rem;
+    min-height: 6.625rem;
   }
 }
 
@@ -64,7 +64,7 @@
 @media (max-width: 560px) {
   .card {
     display: grid;
-    height: 240px;
+    height: 276px;
     grid-template-rows: minmax(0, 3fr) minmax(0, 1fr);
   }
 

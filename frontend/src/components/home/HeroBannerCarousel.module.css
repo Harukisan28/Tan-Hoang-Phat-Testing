@@ -11,13 +11,14 @@
 
 .slideFrame {
   width: 100%;
+  aspect-ratio: 1915 / 821;
   overflow: hidden;
   background: var(--color-surface);
 }
 
 .banner {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
   animation: banner-enter 260ms ease-out both;
 }

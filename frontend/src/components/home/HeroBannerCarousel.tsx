@@ -43,7 +43,7 @@ const banners = [
   },
 ] as const;
 
-const autoplayDelayMs = 6000;
+const autoplayDelayMs = 3000;
 
 export function HeroBannerCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
