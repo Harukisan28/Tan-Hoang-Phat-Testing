@@ -72,14 +72,20 @@ export function HeroBannerCarousel() {
 
   useEffect(() => {
     if (!isAutoAdvancing) return;
-    const intervalId = window.setInterval(() => {
+    const timeoutId = window.setTimeout(() => {
       setActiveIndex((current) => (current + 1) % banners.length);
     }, autoplayDelayMs);
-    return () => window.clearInterval(intervalId);
-  }, [isAutoAdvancing]);
+    return () => window.clearTimeout(timeoutId);
+  }, [activeIndex, isAutoAdvancing]);
 
-  const goToPrevious = () => setActiveIndex((current) => (current - 1 + banners.length) % banners.length);
-  const goToNext = () => setActiveIndex((current) => (current + 1) % banners.length);
+  const navigateToSlide = (nextIndex: number | ((currentIndex: number) => number)) => {
+    setIsHovered(false);
+    setIsFocused(false);
+    setActiveIndex(nextIndex);
+  };
+
+  const goToPrevious = () => navigateToSlide((current) => (current - 1 + banners.length) % banners.length);
+  const goToNext = () => navigateToSlide((current) => (current + 1) % banners.length);
 
   const handleKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
     if (event.key === 'ArrowLeft') {
@@ -152,7 +158,7 @@ export function HeroBannerCarousel() {
               type="button"
               aria-label={`Ảnh ${index + 1} trên ${banners.length}`}
               aria-pressed={index === activeIndex}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => navigateToSlide(index)}
             />
           ))}
         </div>
