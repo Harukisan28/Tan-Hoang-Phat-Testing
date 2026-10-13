@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { SiteFooter } from '../layout/SiteFooter';
 import { SiteHeader } from '../layout/SiteHeader';
+import { FloatingContactActions } from '../layout/FloatingContactActions';
 import { ScrollToTop } from '../layout/ScrollToTop';
 import { AreasPage } from '../../pages/AreasPage';
 import { ContactPage } from '../../pages/ContactPage';
@@ -70,6 +71,7 @@ export function AppRouter() {
       <SiteHeader currentPath={path ?? '/'} products={products} />
       <main>{renderPage()}</main>
       <SiteFooter />
+      <FloatingContactActions />
     </div>
   );
 }

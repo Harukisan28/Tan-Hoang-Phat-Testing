@@ -1,5 +1,5 @@
 .footer {
-  padding: 3.5rem 0 1.25rem;
+  padding: 3.5rem 0 calc(8.5rem + env(safe-area-inset-bottom));
   border-top: 3px solid var(--color-gold-500);
   background: var(--color-white);
   color: var(--color-ink);
@@ -99,6 +99,10 @@
 }
 
 @media (max-width: 760px) {
+  .footer {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+
   .grid {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
