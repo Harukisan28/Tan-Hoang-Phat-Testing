@@ -19,14 +19,28 @@ const requiredColumns = ['name', 'category', 'image', 'details', 'popular'] as c
 
 let activeRequest: { key: string; promise: Promise<InoxProduct[]> } | null = null;
 
-const normalizeSlug = (value: string) => value
+const normalizeSearchText = (value: string) => value
   .trim()
   .toLocaleLowerCase('vi')
   .replace(/đ/g, 'd')
   .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[\u0300-\u036f]/g, '');
+
+const normalizeSlug = (value: string) => normalizeSearchText(value)
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-|-$/g, '');
+
+export function searchProducts(products: InoxProduct[], query: string): InoxProduct[] {
+  const normalizedQuery = normalizeSearchText(query);
+  if (!normalizedQuery) return [];
+
+  return products.filter((product) => normalizeSearchText([
+    product.title,
+    product.category,
+    product.shortDescription,
+    product.description,
+  ].join(' ')).includes(normalizedQuery));
+}
 
 const asText = (value: unknown) => typeof value === 'string' || typeof value === 'number'
   ? String(value).trim()

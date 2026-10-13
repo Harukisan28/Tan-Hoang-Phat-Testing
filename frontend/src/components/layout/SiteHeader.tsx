@@ -4,6 +4,7 @@ import { companyProfile, navItems } from '../../data/siteData';
 import { groupProductsByCategory } from '../../data/productCatalog';
 import type { InoxProduct, RouteHref, RoutePath } from '../../types/site';
 import { navigateTo, siteAsset, siteHref } from '../../utils/routing';
+import { ProductSearch } from './ProductSearch';
 import styles from './SiteHeader.module.css';
 
 interface SiteHeaderProps {
@@ -221,6 +222,7 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                   >
                     {item.label}
                   </a>
+                  {item.href === '/lien-he' && <ProductSearch id="desktop-product-search" products={products} onNavigate={handleNavigate} />}
                 </Fragment>
               ))}
             </nav>
@@ -303,6 +305,7 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                 <span>{item.label}</span>
                 <ChevronDown aria-hidden="true" size={16} className={styles.mobileArrow} />
               </a>
+              {item.href === '/lien-he' && <ProductSearch id="mobile-product-search" products={products} onNavigate={handleNavigate} isEnabled={isMenuOpen} />}
             </Fragment>
           ))}
         </div>

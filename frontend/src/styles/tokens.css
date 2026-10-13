@@ -1,8 +1,8 @@
 :root {
-  --font-heading: 'Quicksand', Arial, Helvetica, sans-serif;
-  --font-body: 'Quicksand', Arial, Helvetica, sans-serif;
+  --font-heading: 'Be Vietnam Pro', Arial, Helvetica, sans-serif;
+  --font-body: 'Inter', Arial, Helvetica, sans-serif;
   --font-sans: var(--font-body);
-  --font-weight-body: 500;
+  --font-weight-body: 400;
   --font-weight-heading: 700;
 
   --color-black: #080808;

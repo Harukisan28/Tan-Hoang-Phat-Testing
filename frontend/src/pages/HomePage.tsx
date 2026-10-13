@@ -5,7 +5,7 @@ import { RuleHeading } from '../components/sections/RuleHeading';
 import { ValuesGrid } from '../components/about/ValuesGrid';
 import { InoxProductCard } from '../components/cards/InoxProductCard';
 import { ServiceCard } from '../components/cards/ServiceCard';
-import { IdentityHero } from '../components/home/IdentityHero';
+import { HeroBannerCarousel } from '../components/home/HeroBannerCarousel';
 import { ProofStrip } from '../components/home/ProofStrip';
 import styles from './HomePage.module.css';
 
@@ -30,19 +30,7 @@ export function HomePage({ products, onNavigate }: HomePageProps) {
 
   return (
     <>
-      <IdentityHero onNavigate={onNavigate} />
-
-      <section className={`${styles.servicesSection} section`} aria-labelledby="services-title">
-        <div className="container">
-          <RuleHeading id="services-title" title="LĨNH VỰC HOẠT ĐỘNG" />
-          <p className={styles.serviceIntro}>
-            Từ gia công chi tiết đến thi công hoàn thiện, mỗi lĩnh vực là một cách Tân Hoàng Phát biến yêu cầu kỹ thuật thành sản phẩm có giá trị sử dụng lâu dài.
-          </p>
-          <div className={styles.serviceRail}>
-            {serviceAreas.map((service) => <ServiceCard key={service.slug} service={service} />)}
-          </div>
-        </div>
-      </section>
+      <HeroBannerCarousel />
 
       {popularProducts.length > 0 && (
         <section className={`${styles.popularSection} section`} aria-labelledby="popular-products-title">
@@ -77,6 +65,18 @@ export function HomePage({ products, onNavigate }: HomePageProps) {
           ) : (
             <p className={styles.emptyProducts}>Danh mục sản phẩm đang được cập nhật.</p>
           )}
+        </div>
+      </section>
+
+      <section className={`${styles.servicesSection} section`} aria-labelledby="services-title">
+        <div className="container">
+          <RuleHeading id="services-title" title="LĨNH VỰC HOẠT ĐỘNG" />
+          <p className={styles.serviceIntro}>
+            Từ gia công chi tiết đến thi công hoàn thiện, mỗi lĩnh vực là một cách Tân Hoàng Phát biến yêu cầu kỹ thuật thành sản phẩm có giá trị sử dụng lâu dài.
+          </p>
+          <div className={styles.serviceRail}>
+            {serviceAreas.map((service) => <ServiceCard key={service.slug} service={service} />)}
+          </div>
         </div>
       </section>
 

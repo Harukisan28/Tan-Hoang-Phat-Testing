@@ -1,0 +1,153 @@
+.searchRoot {
+  position: relative;
+  width: min(15rem, 24vw);
+  min-width: 12rem;
+  flex: 0 1 15rem;
+}
+
+.searchForm {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 42px;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 0.7rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-button);
+  background: var(--color-white);
+  transition: border-color var(--motion-standard), box-shadow var(--motion-standard);
+}
+
+.searchForm:focus-within {
+  border-color: var(--color-green-700);
+  box-shadow: var(--focus-ring);
+}
+
+.searchIcon {
+  flex: 0 0 auto;
+  color: var(--color-green-800);
+}
+
+.searchInput {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+
+.searchInput::placeholder {
+  color: var(--color-muted);
+  opacity: 0.9;
+}
+
+.searchInput::-webkit-search-cancel-button {
+  display: none;
+}
+
+.clearButton {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  color: var(--color-green-800);
+}
+
+.suggestions {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  left: 0;
+  max-height: min(50vh, 24rem);
+  overflow-y: auto;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.suggestion {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-ink);
+  transition: background var(--motion-standard), color var(--motion-standard);
+}
+
+.suggestion:last-child {
+  border-bottom: 0;
+}
+
+.suggestion:hover,
+.suggestionActive {
+  background: var(--color-green-100);
+  color: var(--color-green-800);
+}
+
+.suggestionTitle {
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suggestionCategory {
+  overflow: hidden;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.noResults {
+  margin: 0;
+  padding: 0.85rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 920px) {
+  .searchRoot {
+    width: 100%;
+    min-width: 0;
+    margin-block: 0.65rem 0.9rem;
+  }
+
+  .searchForm {
+    min-height: 48px;
+  }
+
+  .searchInput {
+    min-height: 46px;
+  }
+
+  .suggestions {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    max-height: min(36vh, 14rem);
+    margin-top: 0.25rem;
+  }
+}

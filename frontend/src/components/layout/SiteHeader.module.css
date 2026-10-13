@@ -83,7 +83,7 @@
   align-items: center;
   gap: 0.25rem;
   color: var(--color-ink);
-  font-size: 0.9rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.25;
   text-align: center;
@@ -128,7 +128,7 @@
     background: transparent;
     cursor: pointer;
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 0.9375rem;
     font-weight: 600;
     line-height: 1.25;
   }
@@ -183,7 +183,7 @@
   color: var(--color-ink);
   cursor: pointer;
   font: inherit;
-  font-size: 0.84rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   text-align: left;
   transition: color var(--motion-standard), background var(--motion-standard);
@@ -215,8 +215,8 @@
   margin: 0;
   padding: 0.65rem 0.7rem 0.45rem;
   color: var(--color-green-800);
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 0.9375rem;
+  font-weight: 600;
 }
 
 .productsSubmenu {
@@ -239,7 +239,7 @@
   padding: 0.65rem 0.8rem;
   border-bottom: 1px solid var(--color-line);
   color: var(--color-ink);
-  font-size: 0.86rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   transition: color var(--motion-standard), background var(--motion-standard);
 }
@@ -343,6 +343,7 @@
     justify-content: space-between;
     border-bottom: 1px solid var(--color-line);
     color: var(--color-ink);
+    font-size: 0.9375rem;
     font-weight: 600;
   }
 
@@ -402,7 +403,7 @@
     color: var(--color-ink);
     cursor: pointer;
     font: inherit;
-    font-size: 0.88rem;
+    font-size: 0.9375rem;
     font-weight: 600;
     text-align: left;
   }
@@ -434,8 +435,8 @@
     padding: 0.6rem 0.75rem;
     border-bottom: 1px solid var(--color-line);
     color: var(--color-ink);
-    font-size: 0.88rem;
-    font-weight: 500;
+    font-size: 0.9375rem;
+    font-weight: 600;
   }
 
   .mobileProductLink:last-child {

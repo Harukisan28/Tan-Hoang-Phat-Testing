@@ -43,7 +43,7 @@
   margin: 0.35rem 0 0;
   overflow: hidden;
   color: var(--color-muted);
-  font-size: 0.78rem;
+  font-size: 1rem;
   line-height: 1.4;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -58,5 +58,41 @@
 @media (max-width: 760px) {
   .card {
     width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .card {
+    display: grid;
+    height: 240px;
+    grid-template-rows: minmax(0, 3fr) minmax(0, 1fr);
+  }
+
+  .media {
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+
+  .content {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0.2rem 0.35rem;
+    border-top-width: 2px;
+  }
+
+  .content h3 {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.875rem;
+    line-height: 1.15;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .content p {
+    margin-top: 0.2rem;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    -webkit-line-clamp: 2;
   }
 }
