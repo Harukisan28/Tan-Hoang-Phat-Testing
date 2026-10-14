@@ -92,7 +92,7 @@ export function ProductSearch({ id, products, onNavigate, isEnabled = true }: Pr
           aria-controls={isOpen && query.trim() ? listboxId : undefined}
           aria-activedescendant={activeIndex >= 0 ? `${id}-option-${activeIndex}` : undefined}
           autoComplete="off"
-          placeholder="Tìm sản phẩm…"
+          placeholder="Tìm kiếm"
           value={query}
           onChange={(event) => {
             setQuery(event.target.value);

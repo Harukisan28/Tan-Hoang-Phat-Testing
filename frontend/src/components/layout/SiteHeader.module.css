@@ -2,22 +2,24 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: var(--color-black);
+  background: var(--color-white);
 }
 
 .utilityBar {
   background: var(--color-green-700);
   color: var(--color-white);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 600;
 }
 
 .utilityContent {
   display: flex;
-  min-height: 36px;
+  width: min(calc(100% - 2rem), 100rem);
+  min-height: 44px;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  margin-inline: auto;
 }
 
 .utilityLinks {
@@ -43,19 +45,64 @@
   color: var(--color-ink);
 }
 
-.mainBarInner {
+.mastheadInner {
+  display: grid;
+  width: min(calc(100% - 2rem), 100rem);
+  min-width: 0;
+  min-height: 8rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  margin-inline: auto;
+}
+
+.companyTagline {
+  max-width: 28ch;
+  margin: 0;
+  color: var(--color-green-800);
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.mastheadActions {
   display: flex;
   min-width: 0;
-  min-height: clamp(4.5rem, 6vw, 5.5rem);
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.mastheadActions > * {
+  width: min(100%, 15rem);
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.hotline {
+  display: inline-flex;
+  min-height: 34px;
   align-items: center;
-  gap: clamp(0.75rem, 1.5vw, 1.5rem);
+  justify-content: center;
+  gap: 0.55rem;
+  color: #bf2630;
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hotline svg {
+  color: var(--color-green-700);
 }
 
 .logoLink {
   display: block;
   flex: 0 0 auto;
-  width: 126px;
-  height: 62px;
+  width: 164px;
+  height: 80px;
   overflow: hidden;
   border-radius: 2px;
   background: var(--color-white);
@@ -68,33 +115,61 @@
   mix-blend-mode: multiply;
 }
 
+.navBar {
+  min-height: 56px;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-white);
+}
+
+.navInner {
+  width: min(calc(100% - 2rem), 100rem);
+  margin-inline: auto;
+}
+
 .desktopNav {
   display: flex;
-  flex: 0 1 auto;
-  justify-content: flex-start;
-  gap: clamp(0.7rem, 1.4vw, 1.25rem);
+  width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+  gap: 0;
 }
 
 .navLink {
   position: relative;
   display: inline-flex;
-  min-height: 48px;
+  min-height: 56px;
   min-width: 0;
   align-items: center;
+  justify-content: center;
   gap: 0.25rem;
+  padding-inline: 1.2rem;
   color: var(--color-ink);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1.25;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  line-height: 1.2;
   text-align: center;
-  transition: color var(--motion-standard);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--motion-standard), background var(--motion-standard);
+}
+
+.homeLink {
+  width: 48px;
+  flex: 0 0 48px;
+  padding: 0;
+}
+
+
+.homeLink svg {
+  color: var(--color-green-800);
 }
 
 .navLink::after {
   position: absolute;
-  right: 0;
+  right: 0.75rem;
   bottom: 0;
-  left: 0;
+  left: 0.75rem;
   height: 3px;
   background: var(--color-green-700);
   content: '';
@@ -106,7 +181,8 @@
 .navLink:hover,
 .navLinkActive,
 .productsTriggerOpen {
-  color: var(--color-green-500);
+  background: transparent;
+  color: var(--color-green-800);
 }
 
 .navLink:hover::after,
@@ -116,22 +192,30 @@
   transform-origin: left;
 }
 
+.navLink.homeLinkActive {
+  background: transparent;
+  color: var(--color-green-800);
+}
+
 .productsItem {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-  .productsTrigger {
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1.25;
-  }
+
+.productsTrigger {
+  padding: 0 0.85rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: inherit;
+}
 
 .productsTrigger svg {
   flex: 0 0 auto;
@@ -259,27 +343,6 @@
   color: var(--color-green-800);
 }
 
-.desktopCta {
-  display: inline-flex;
-  min-height: 42px;
-  margin-left: auto;
-  align-items: center;
-  justify-content: center;
-  padding: 0.65rem 1rem;
-  border-radius: var(--radius-button);
-  background: var(--color-green-700);
-  color: var(--color-white);
-  font-size: 0.84rem;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: background var(--motion-standard), transform var(--motion-standard);
-}
-
-.desktopCta:hover {
-  background: var(--color-green-600);
-  color: var(--color-white);
-  transform: translateY(-1px);
-}
 
 .menuButton {
   display: none;
@@ -298,9 +361,16 @@
 }
 
 @media (max-width: 920px) {
-  .desktopNav,
-  .desktopCta {
+  .navBar,
+  .companyTagline,
+  .mastheadActions,
+  .desktopNav {
     display: none;
+  }
+
+  .mastheadInner {
+    display: flex;
+    justify-content: space-between;
   }
 
   .menuButton {
@@ -337,7 +407,7 @@
   .mobileNavLink,
   .mobileProductsTrigger {
     display: flex;
-    min-height: 54px;
+    min-height: 58px;
     min-width: 0;
     align-items: center;
     justify-content: space-between;
@@ -463,27 +533,30 @@
   .utilityContent {
     min-height: 36px;
     justify-content: center;
-    padding-block: 0.3rem;
+    padding-block: 0.35rem;
+    text-align: center;
   }
 
   .utilityContent > span {
-    display: none;
+    display: block;
   }
 
   .utilityLinks {
-    justify-content: space-between;
-    width: 100%;
-    gap: 0.45rem;
-    font-size: 0.72rem;
+    display: none;
   }
 
-  .mainBarInner {
-    min-height: 70px;
+  .mastheadInner {
+    min-height: 84px;
   }
 
   .logoLink {
-    width: 112px;
-    height: 54px;
+    width: 128px;
+    height: 62px;
+  }
+
+  .menuButton {
+    width: 52px;
+    height: 52px;
   }
 }
 
@@ -492,7 +565,7 @@
     min-height: 30px;
   }
 
-  .mainBarInner {
+  .mastheadInner {
     min-height: 64px;
   }
 }

@@ -2,7 +2,7 @@ import type { MouseEvent } from 'react';
 import { ArrowUpRight, Globe, Mail, MapPin, PhoneCall } from 'lucide-react';
 import { companyProfile, navItems } from '../../data/siteData';
 import type { RoutePath } from '../../types/site';
-import { navigateTo, siteAsset, siteHref } from '../../utils/routing';
+import { navigateTo, siteHref } from '../../utils/routing';
 import styles from './SiteFooter.module.css';
 
 export function SiteFooter() {
@@ -16,9 +16,7 @@ export function SiteFooter() {
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.about}>
-            <a className={styles.logoLink} href={siteHref('/')} onClick={(event) => handleNavigate(event, '/')}>
-              <img src={siteAsset('/assets/tan-hoang-phat-logo.jpeg')} alt="Logo Tân Hoàng Phát" />
-            </a>
+            <h2 className={styles.companyTitle}>Công ty</h2>
             <p>{companyProfile.description}</p>
           </div>
           <div>

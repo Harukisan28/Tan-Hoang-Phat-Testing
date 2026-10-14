@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, ChevronDown, ChevronRight, Mail, Menu, PhoneCall, X } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, ChevronRight, House, Mail, Menu, PhoneCall, X } from 'lucide-react';
 import { companyProfile, navItems } from '../../data/siteData';
 import { groupProductsByCategory } from '../../data/productCatalog';
 import type { InoxProduct, RouteHref, RoutePath } from '../../types/site';
@@ -123,9 +123,8 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
       <div className={styles.utilityBar}>
         <div className="container">
           <div className={styles.utilityContent}>
-            <span>Giải pháp cơ khí chất lượng – đồng hành cùng phát triển</span>
+            <span>Chào mừng bạn đến với cửa hàng TÂN HOÀNG PHÁT</span>
             <div className={styles.utilityLinks}>
-              <a href={`tel:${companyProfile.phone}`}><PhoneCall aria-hidden="true" size={14} /> {companyProfile.phone}</a>
               <a href={`mailto:${companyProfile.email}`}><Mail aria-hidden="true" size={14} /> {companyProfile.email}</a>
             </div>
           </div>
@@ -133,12 +132,55 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
       </div>
       <div className={styles.mainBar}>
         <div className="container">
-          <div className={styles.mainBarInner}>
+          <div className={styles.mastheadInner}>
             <a className={styles.logoLink} href={siteHref('/')} aria-label="Tân Hoàng Phát - Trang chủ" onClick={(event) => { event.preventDefault(); handleNavigate('/'); }}>
               <img src={siteAsset('/assets/tan-hoang-phat-logo.jpeg')} alt="Logo Tân Hoàng Phát" />
             </a>
-            <nav className={styles.desktopNav} aria-label="Điều hướng chính">
-              {navItems.map((item) => (
+            <p className={styles.companyTagline}>{companyProfile.tagline}</p>
+            <div className={styles.mastheadActions}>
+              <a className={styles.hotline} href={`tel:${companyProfile.phone}`}>
+                <PhoneCall aria-hidden="true" size={18} />
+                <span><strong>Hotline</strong> {companyProfile.phone}</span>
+              </a>
+              <ProductSearch id="desktop-product-search" products={products} onNavigate={handleNavigate} />
+            </div>
+            <button
+              ref={menuButtonRef}
+              className={styles.menuButton}
+              type="button"
+              aria-label={isMenuOpen ? 'Đóng menu' : 'Mở menu'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => {
+                if (isMenuOpen) {
+                  setIsMobileProductsOpen(false);
+                  setActiveMobileCategory(null);
+                }
+                setIsMenuOpen((open) => !open);
+              }}
+            >
+              {isMenuOpen ? <X aria-hidden="true" size={22} /> : <Menu aria-hidden="true" size={22} />}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className={styles.navBar}>
+        <div className={styles.navInner}>
+          <nav className={styles.desktopNav} aria-label="Điều hướng chính">
+            {navItems.map((item) => (
+              item.href === '/' ? (
+                <a
+                  key={item.href}
+                  className={`${styles.navLink} ${styles.homeLink} ${currentPath === '/' ? styles.homeLinkActive : ''}`}
+                  href={siteHref('/')}
+                  aria-label="Trang chủ"
+                  aria-current={currentPath === '/' ? 'page' : undefined}
+                  onClick={(event) => { event.preventDefault(); handleNavigate('/'); }}
+                >
+                  <House aria-hidden="true" size={17} />
+                  <span className="sr-only">{item.label}</span>
+                </a>
+              ) : (
                 <Fragment key={item.href}>
                   {item.href === '/lien-he' && (
                     <div
@@ -222,31 +264,10 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                   >
                     {item.label}
                   </a>
-                  {item.href === '/lien-he' && <ProductSearch id="desktop-product-search" products={products} onNavigate={handleNavigate} />}
                 </Fragment>
-              ))}
-            </nav>
-            <a className={styles.desktopCta} href={siteHref('/lien-he')} onClick={(event) => { event.preventDefault(); handleNavigate('/lien-he'); }}>
-              Nhận tư vấn
-            </a>
-            <button
-              ref={menuButtonRef}
-              className={styles.menuButton}
-              type="button"
-              aria-label={isMenuOpen ? 'Đóng menu' : 'Mở menu'}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-navigation"
-              onClick={() => {
-                if (isMenuOpen) {
-                  setIsMobileProductsOpen(false);
-                  setActiveMobileCategory(null);
-                }
-                setIsMenuOpen((open) => !open);
-              }}
-            >
-              {isMenuOpen ? <X aria-hidden="true" size={22} /> : <Menu aria-hidden="true" size={22} />}
-            </button>
-          </div>
+              )
+            ))}
+          </nav>
         </div>
       </div>
       <nav ref={menuPanelRef} id="mobile-navigation" className={`${styles.mobileNav} ${isMenuOpen ? styles.mobileNavOpen : ''}`} aria-label="Điều hướng di động" aria-hidden={!isMenuOpen}>
