@@ -136,14 +136,13 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
             <a className={styles.logoLink} href={siteHref('/')} aria-label="Tân Hoàng Phát - Trang chủ" onClick={(event) => { event.preventDefault(); handleNavigate('/'); }}>
               <img src={siteAsset('/assets/tan-hoang-phat-logo.jpeg')} alt="Logo Tân Hoàng Phát" />
             </a>
-            <p className={styles.companyTagline}>{companyProfile.tagline}</p>
-            <div className={styles.mastheadActions}>
-              <a className={styles.hotline} href={`tel:${companyProfile.phone}`}>
-                <PhoneCall aria-hidden="true" size={18} />
-                <span><strong>Hotline</strong> {companyProfile.phone}</span>
-              </a>
+            <div className={styles.mastheadSearch}>
               <ProductSearch id="desktop-product-search" products={products} onNavigate={handleNavigate} />
             </div>
+            <a className={styles.hotline} href={`tel:${companyProfile.phone}`}>
+              <PhoneCall aria-hidden="true" size={20} />
+              <span><strong>Hotline</strong> {companyProfile.phone}</span>
+            </a>
             <button
               ref={menuButtonRef}
               className={styles.menuButton}
@@ -326,7 +325,6 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
                 <span>{item.label}</span>
                 <ChevronDown aria-hidden="true" size={16} className={styles.mobileArrow} />
               </a>
-              {item.href === '/lien-he' && <ProductSearch id="mobile-product-search" products={products} onNavigate={handleNavigate} isEnabled={isMenuOpen} />}
             </Fragment>
           ))}
         </div>

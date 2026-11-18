@@ -1,7 +1,13 @@
 .carousel {
-  width: min(calc(100% - 2rem), 100rem);
+  width: min(calc(100% - 2rem), var(--content-max));
   margin-inline: auto;
   background: var(--color-white);
+}
+
+@media (min-width: 700px) {
+  .carousel {
+    width: min(calc(100% - 4rem), var(--content-max));
+  }
 }
 
 .carousel:focus-visible {

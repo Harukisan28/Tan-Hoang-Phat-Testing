@@ -14,7 +14,7 @@
 
 .utilityContent {
   display: flex;
-  width: min(calc(100% - 2rem), 100rem);
+  width: 100%;
   min-height: 44px;
   align-items: center;
   justify-content: space-between;
@@ -47,39 +47,27 @@
 
 .mastheadInner {
   display: grid;
-  width: min(calc(100% - 2rem), 100rem);
+  width: 100%;
   min-width: 0;
-  min-height: 8rem;
+  min-height: 9rem;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(1rem, 3vw, 2.5rem);
   margin-inline: auto;
 }
 
-.companyTagline {
-  max-width: 28ch;
-  margin: 0;
-  color: var(--color-green-800);
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 1.6vw, 1.5rem);
-  font-weight: 800;
-  line-height: 1.35;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.mastheadActions {
+.mastheadSearch {
   display: flex;
+  width: min(100%, 34rem);
   min-width: 0;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.35rem;
+  justify-self: center;
+  justify-content: center;
 }
 
-.mastheadActions > * {
-  width: min(100%, 15rem);
+.mastheadSearch > div {
+  width: 100%;
   min-width: 0;
-  flex: 0 1 auto;
+  flex: 1 1 auto;
 }
 
 .hotline {
@@ -101,8 +89,8 @@
 .logoLink {
   display: block;
   flex: 0 0 auto;
-  width: 164px;
-  height: 80px;
+  width: 268px;
+  height: 130px;
   overflow: hidden;
   border-radius: 2px;
   background: var(--color-white);
@@ -122,7 +110,7 @@
 }
 
 .navInner {
-  width: min(calc(100% - 2rem), 100rem);
+  width: min(calc(100% - 2rem), var(--content-max));
   margin-inline: auto;
 }
 
@@ -155,8 +143,9 @@
 }
 
 .homeLink {
-  width: 48px;
-  flex: 0 0 48px;
+  width: auto;
+  flex: 0 0 auto;
+  justify-content: flex-start;
   padding: 0;
 }
 
@@ -362,15 +351,28 @@
 
 @media (max-width: 920px) {
   .navBar,
-  .companyTagline,
-  .mastheadActions,
+  .hotline,
   .desktopNav {
     display: none;
   }
 
   .mastheadInner {
     display: flex;
+    min-height: 5.5rem;
     justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .mastheadSearch {
+    width: auto;
+    max-width: none;
+    flex: 1 1 auto;
+    justify-self: auto;
+  }
+
+  .logoLink {
+    width: 158px;
+    height: 77px;
   }
 
   .menuButton {
@@ -546,17 +548,19 @@
   }
 
   .mastheadInner {
-    min-height: 84px;
+    width: calc(100% + 1rem);
+    min-height: 78px;
+    margin-inline: -0.5rem;
   }
 
   .logoLink {
-    width: 128px;
-    height: 62px;
+    width: 108px;
+    height: 52px;
   }
 
   .menuButton {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
   }
 }
 
