@@ -49,7 +49,7 @@
   display: grid;
   width: 100%;
   min-width: 0;
-  min-height: 14rem;
+  min-height: 11rem;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(1rem, 3vw, 2.5rem);
@@ -90,7 +90,7 @@
   position: relative;
   display: block;
   flex: 0 0 auto;
-  width: clamp(13rem, 21vw, 20rem);
+  width: clamp(10rem, 16.5vw, 15.5rem);
   aspect-ratio: 1.497 / 1;
   overflow: hidden;
   background: var(--color-white);
