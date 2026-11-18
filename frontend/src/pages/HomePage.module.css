@@ -60,6 +60,12 @@
   min-width: 0;
 }
 
+.productHeading {
+  color: var(--color-green-800);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
 .sectionHeader .lead {
   max-width: 58ch;
 }

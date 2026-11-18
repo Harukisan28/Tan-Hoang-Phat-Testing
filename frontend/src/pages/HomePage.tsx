@@ -37,8 +37,7 @@ export function HomePage({ products, onNavigate }: HomePageProps) {
           <div className="container">
             <div className={styles.sectionHeader}>
               <div>
-                <p className="eyebrow">Được quan tâm</p>
-                <h2 id="popular-products-title" className="section-heading">Sản phẩm nổi bật</h2>
+                <h2 id="popular-products-title" className={`section-heading ${styles.productHeading}`}>Sản phẩm nổi bật</h2>
                 <p className="lead">Những sản phẩm được Tân Hoàng Phát giới thiệu nổi bật.</p>
               </div>
             </div>
@@ -53,8 +52,7 @@ export function HomePage({ products, onNavigate }: HomePageProps) {
         <div className="container">
           <div className={styles.sectionHeader}>
             <div>
-              <p className="eyebrow">Danh mục sản phẩm</p>
-              <h2 id="products-title" className="section-heading">Sản phẩm tiêu biểu</h2>
+              <h2 id="products-title" className={`section-heading ${styles.productHeading}`}>Sản phẩm tiêu biểu</h2>
               <p className="lead">Khám phá đầy đủ các sản phẩm được sắp xếp theo danh mục.</p>
             </div>
           </div>

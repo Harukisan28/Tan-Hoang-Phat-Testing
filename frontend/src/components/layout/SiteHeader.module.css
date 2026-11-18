@@ -58,7 +58,7 @@
 
 .mastheadSearch {
   display: flex;
-  width: min(100%, 34rem);
+  width: min(100%, 40rem);
   min-width: 0;
   justify-self: center;
   justify-content: center;
@@ -72,17 +72,19 @@
 
 .hotline {
   display: inline-flex;
-  min-height: 34px;
+  min-height: 40px;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   color: #bf2630;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 700;
   white-space: nowrap;
 }
 
 .hotline svg {
+  width: 1.55rem;
+  height: 1.55rem;
   color: var(--color-green-700);
 }
 
@@ -108,9 +110,10 @@
 }
 
 .navBar {
-  min-height: 56px;
-  border-bottom: 1px solid var(--color-line);
-  background: var(--color-white);
+  min-height: 62px;
+  border-bottom: 1px solid var(--color-green-800);
+  background: var(--color-green-800);
+  color: var(--color-white);
 }
 
 .navInner {
@@ -122,23 +125,24 @@
   display: flex;
   width: 100%;
   min-width: 0;
-  justify-content: space-between;
-  gap: 0;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.15rem;
 }
 
 .navLink {
   position: relative;
   display: inline-flex;
-  min-height: 56px;
+  min-height: 62px;
   min-width: 0;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.3rem;
   padding-inline: 1.2rem;
-  color: var(--color-ink);
-  font-size: 0.82rem;
+  color: var(--color-white);
+  font-size: 1.1875rem;
   font-weight: 700;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.01em;
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
@@ -149,13 +153,16 @@
 .homeLink {
   width: auto;
   flex: 0 0 auto;
-  justify-content: flex-start;
-  padding: 0;
+  justify-content: center;
+  padding-block: 0;
+  padding-inline: 0.9rem;
 }
 
 
 .homeLink svg {
-  color: var(--color-green-800);
+  width: 1.65rem;
+  height: 1.65rem;
+  color: var(--color-white);
 }
 
 .navLink::after {
@@ -164,7 +171,7 @@
   bottom: 0;
   left: 0.75rem;
   height: 3px;
-  background: var(--color-green-700);
+  background: var(--color-white);
   content: '';
   transform: scaleX(0);
   transform-origin: right;
@@ -174,8 +181,8 @@
 .navLink:hover,
 .navLinkActive,
 .productsTriggerOpen {
-  background: transparent;
-  color: var(--color-green-800);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
 }
 
 .navLink:hover::after,
@@ -186,8 +193,8 @@
 }
 
 .navLink.homeLinkActive {
-  background: transparent;
-  color: var(--color-green-800);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
 }
 
 .productsItem {
@@ -203,14 +210,16 @@
   background: transparent;
   cursor: pointer;
   font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   line-height: inherit;
-  text-transform: inherit;
+  text-transform: uppercase;
 }
 
 .productsTrigger svg {
+  width: 1.05rem;
+  height: 1.05rem;
   flex: 0 0 auto;
   transition: transform var(--motion-standard);
 }
@@ -418,8 +427,10 @@
     justify-content: space-between;
     border-bottom: 1px solid var(--color-line);
     color: var(--color-ink);
-    font-size: 0.9375rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
   }
 
   .mobileProductsTrigger {

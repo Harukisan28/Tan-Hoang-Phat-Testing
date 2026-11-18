@@ -24,11 +24,7 @@ export function InoxProductCard({ product, onNavigate }: InoxProductCardProps) {
         <ResponsiveImage src={product.imageUrl} alt={product.imageAlt} sizes="(max-width: 700px) 100vw, 50vw" />
       </div>
       <div className={styles.content}>
-        <div>
-          <p className={styles.category}>{product.category}</p>
-          <h3>{product.title}</h3>
-          <p className={styles.summary}>{product.shortDescription}</p>
-        </div>
+        <h3>{product.title}</h3>
         <span className={styles.action}>Xem thông tin <ArrowUpRight aria-hidden="true" size={17} /></span>
       </div>
     </a>
