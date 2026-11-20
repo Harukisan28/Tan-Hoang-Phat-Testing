@@ -35,7 +35,28 @@ The repository includes a GitHub Actions workflow at `.github/workflows/deploy.y
 4. Push to `main` or run the workflow manually from the **Actions** tab.
 5. Open the deployment URL shown by the workflow. For a repository named `my-site`, it will usually be `https://<username>.github.io/my-site/`.
 
-The Vite configuration detects the GitHub repository name during Actions builds, and the app prefixes its assets and internal links for repository hosting. The deployment also creates a `404.html` fallback so direct route URLs continue to work.
+The deployment also creates a `404.html` fallback so direct route URLs continue to work.
+
+### Custom domain (`tanhoangphat-m.com`)
+
+The site is configured for the custom domain `tanhoangphat-m.com` with `www.tanhoangphat-m.com` as the alternate name.
+
+- `frontend/public/CNAME` holds `tanhoangphat-m.com`, so the file is included in every Pages artifact.
+- `.github/workflows/deploy.yml` also passes `cname: tanhoangphat-m.com` to `actions/configure-pages`.
+- `vite.config.ts` switches `base` to `/` whenever `public/CNAME` exists, because a custom domain is served from the root. Repository hosting under `https://<username>.github.io/<repo>/` keeps the `/<repo>/` prefix only when no CNAME file is present.
+
+DNS records required at the domain registrar (currently Mắt Bão nameservers `ns1.matbao.com` / `ns2.matbao.com`):
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `harukisan28.github.io` |
+| AAAA (optional) | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
+
+After the records resolve, press **Check again** in **Settings → Pages** and enable **Enforce HTTPS**. While DNS is still unset, GitHub reports `DNS check unsuccessful` / `NotServedByPagesError`, and the old `github.io/<repo>/` URL redirects to the custom domain, so the site is unreachable until DNS is fixed.
 
 ## Product catalog from Google Sheets
 
