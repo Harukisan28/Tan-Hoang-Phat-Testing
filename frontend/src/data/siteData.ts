@@ -8,7 +8,7 @@ export const companyProfile: CompanyProfile = {
     'Công ty TNHH Tân Hoàng Phát là đơn vị chuyên thiết kế, gia công và lắp đặt các sản phẩm cơ khí, inox theo yêu cầu. Với đội ngũ kỹ thuật giàu kinh nghiệm và hệ thống máy móc hiện đại, chúng tôi cam kết mang đến những giải pháp tối ưu, sản phẩm chất lượng, bền bỉ và hiệu quả.',
   phone: '0357138686',
   email: 'Dt.tanhoangphat@gmail.com',
-  website: 'www.tanhoangphat.com.vn',
+  website: 'https://tanhoangphat-m.com',
   address: 'Xưởng sản xuất: KCN..., Tỉnh/TP...',
 };
 
