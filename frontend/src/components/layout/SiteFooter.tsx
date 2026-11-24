@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react';
-import { ArrowUpRight, Globe, Mail, MapPin, PhoneCall } from 'lucide-react';
+import { ArrowUpRight, Factory, Globe, Mail, MapPin, PhoneCall } from 'lucide-react';
 import { companyProfile, navItems } from '../../data/siteData';
 import type { RoutePath } from '../../types/site';
 import { displayUrl } from '../../utils/format';
@@ -38,7 +38,8 @@ export function SiteFooter() {
               <li><PhoneCall aria-hidden="true" size={17} /><a href={`tel:${companyProfile.phone}`}>{companyProfile.phone}</a></li>
               <li><Mail aria-hidden="true" size={17} /><a href={`mailto:${companyProfile.email}`}>{companyProfile.email}</a></li>
               <li><Globe aria-hidden="true" size={17} /><a href={companyProfile.website} target="_blank" rel="noreferrer">{displayUrl(companyProfile.website)}</a></li>
-              <li><MapPin aria-hidden="true" size={17} /><span>{companyProfile.address}</span></li>
+              <li><MapPin aria-hidden="true" size={17} /><span>Địa chỉ: {companyProfile.address}</span></li>
+              <li><Factory aria-hidden="true" size={17} /><span>Xưởng sản xuất: {companyProfile.workshop}</span></li>
             </ul>
           </div>
         </div>

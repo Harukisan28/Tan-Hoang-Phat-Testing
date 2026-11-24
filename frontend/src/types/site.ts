@@ -22,6 +22,7 @@ export interface CompanyProfile {
   email: string;
   website: string;
   address: string;
+  workshop: string;
 }
 
 export interface NavItem {

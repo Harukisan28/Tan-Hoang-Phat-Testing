@@ -120,16 +120,6 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
 
   return (
     <header className={styles.header}>
-      <div className={styles.utilityBar}>
-        <div className="container">
-          <div className={styles.utilityContent}>
-            <span>Chào mừng bạn đến với cửa hàng TÂN HOÀNG PHÁT</span>
-            <div className={styles.utilityLinks}>
-              <a href={`mailto:${companyProfile.email}`}><Mail aria-hidden="true" size={14} /> {companyProfile.email}</a>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className={styles.mainBar}>
         <div className="container">
           <div className={styles.mastheadInner}>
@@ -139,10 +129,16 @@ export function SiteHeader({ currentPath, products }: SiteHeaderProps) {
             <div className={styles.mastheadSearch}>
               <ProductSearch id="desktop-product-search" products={products} onNavigate={handleNavigate} />
             </div>
-            <a className={styles.hotline} href={`tel:${companyProfile.phone}`}>
-              <PhoneCall aria-hidden="true" size={20} />
-              <span><strong>Hotline</strong> {companyProfile.phone}</span>
-            </a>
+            <div className={styles.mastheadContact}>
+              <a className={styles.hotline} href={`tel:${companyProfile.phone}`}>
+                <PhoneCall aria-hidden="true" size={20} />
+                <span><strong>Hotline</strong> {companyProfile.phone}</span>
+              </a>
+              <a className={styles.mastheadEmail} href={`mailto:${companyProfile.email}`}>
+                <Mail aria-hidden="true" size={16} />
+                <span>{companyProfile.email}</span>
+              </a>
+            </div>
             <button
               ref={menuButtonRef}
               className={styles.menuButton}

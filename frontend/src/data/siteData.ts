@@ -9,7 +9,8 @@ export const companyProfile: CompanyProfile = {
   phone: '0357138686',
   email: 'Dt.tanhoangphat@gmail.com',
   website: 'https://tanhoangphat-m.com',
-  address: 'Xưởng sản xuất: KCN..., Tỉnh/TP...',
+  address: 'Số 138 đường Thượng Cát, P. Thượng Cát, TP. Hà Nội',
+  workshop: 'Ô Diên, Hà Nội',
 };
 
 export const navItems: NavItem[] = [

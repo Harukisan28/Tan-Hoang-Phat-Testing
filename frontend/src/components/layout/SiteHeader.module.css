@@ -5,40 +5,6 @@
   background: var(--color-white);
 }
 
-.utilityBar {
-  background: var(--color-green-700);
-  color: var(--color-white);
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-.utilityContent {
-  display: flex;
-  width: 100%;
-  min-height: 44px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-inline: auto;
-}
-
-.utilityLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.1rem;
-}
-
-.utilityLinks a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  transition: color var(--motion-standard);
-}
-
-.utilityLinks a:hover {
-  color: var(--color-green-100);
-}
-
 .mainBar {
   border-bottom: 1px solid var(--color-line);
   background: var(--color-white);
@@ -70,9 +36,16 @@
   flex: 1 1 auto;
 }
 
+.mastheadContact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
 .hotline {
   display: inline-flex;
-  min-height: 40px;
+  min-height: 34px;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
@@ -86,6 +59,34 @@
   width: 1.55rem;
   height: 1.55rem;
   color: var(--color-green-700);
+}
+
+.mastheadEmail {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-muted);
+  font-size: 0.98rem;
+  font-weight: 600;
+  transition: color var(--motion-standard);
+}
+
+.mastheadEmail span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mastheadEmail svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  color: var(--color-green-700);
+}
+
+.mastheadEmail:hover {
+  color: var(--color-green-800);
 }
 
 .logoLink {
@@ -364,7 +365,7 @@
 
 @media (max-width: 920px) {
   .navBar,
-  .hotline,
+  .mastheadContact,
   .desktopNav {
     display: none;
   }
@@ -546,21 +547,6 @@
 }
 
 @media (max-width: 620px) {
-  .utilityContent {
-    min-height: 36px;
-    justify-content: center;
-    padding-block: 0.35rem;
-    text-align: center;
-  }
-
-  .utilityContent > span {
-    display: block;
-  }
-
-  .utilityLinks {
-    display: none;
-  }
-
   .mastheadInner {
     width: calc(100% + 1rem);
     min-height: 78px;
@@ -578,10 +564,6 @@
 }
 
 @media (max-height: 700px) and (max-width: 920px) {
-  .utilityContent {
-    min-height: 30px;
-  }
-
   .mastheadInner {
     min-height: 64px;
   }
