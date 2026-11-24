@@ -1,5 +1,6 @@
 import { inoxProducts } from './siteData';
 import type { InoxProduct } from '../types/site';
+import { summarizeProductDetails } from '../utils/productDetails';
 
 interface VisualizationCell {
   v?: unknown;
@@ -57,6 +58,11 @@ const shortText = (value: string, maxLength = 160) => {
   return `${value.slice(0, cutoff > 80 ? cutoff : maxLength - 1).trim()}…`;
 };
 
+const productSummary = (details: string) => {
+  const summary = summarizeProductDetails(details);
+  return summary || shortText(details.replace(/\s+/g, ' '));
+};
+
 export function parseProductCatalogResponse(response: VisualizationResponse): InoxProduct[] {
   if (response.status && response.status !== 'ok') {
     throw new Error(response.errors?.[0]?.message || 'Google Sheets returned an error.');
@@ -110,7 +116,7 @@ export function parseProductCatalogResponse(response: VisualizationResponse): In
       path: `/san-pham/${slug}`,
       title,
       category,
-      shortDescription: shortText(description),
+      shortDescription: productSummary(description),
       description,
       imageUrl,
       imageAlt: `Ảnh ${title}`,

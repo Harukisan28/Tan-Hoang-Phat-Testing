@@ -5,7 +5,7 @@ import styles from './PageHero.module.css';
 
 interface PageHeroProps {
   title: string;
-  description: string;
+  description?: string;
   currentLabel: string;
   onNavigate: (href: RouteHref) => void;
   className?: string;
@@ -33,7 +33,7 @@ export function PageHero({
         <div className={styles.inner}>
           <div>
             <h1 className="page-title">{title}</h1>
-            <p className="lead">{description}</p>
+            {description && <p className="lead">{description}</p>}
           </div>
           {children && <div className={styles.aside}>{children}</div>}
         </div>

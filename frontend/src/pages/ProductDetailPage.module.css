@@ -9,17 +9,25 @@
   align-items: center;
 }
 
+/* The frame hugs the photo so no empty bands appear beside it. */
 .productMedia {
+  width: fit-content;
+  max-width: 100%;
   min-width: 0;
   margin: 0;
+  justify-self: center;
   overflow: hidden;
   border: 1px solid var(--color-line);
   background: var(--color-white);
 }
 
-.productMedia img {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.productImage {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
 }
 
 .productMedia figcaption {
@@ -46,6 +54,51 @@
   margin: 0.9rem 0 0;
   color: var(--color-muted);
   line-height: 1.7;
+}
+
+.specs {
+  margin: 1.1rem 0 1.5rem;
+}
+
+.specRow {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0 0.3rem;
+  padding: 0.16rem 0;
+  line-height: 1.6;
+}
+
+.specRow dt {
+  color: var(--color-green-700);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.specRow dt::after {
+  content: ' :';
+  color: var(--color-green-700);
+  font-weight: 700;
+}
+
+.specRow dd {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: 1rem;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.specRowNote {
+  margin-top: 0.35rem;
+}
+
+.specRowNote dt,
+.specRowNote dd {
+  color: var(--color-green-800);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .highlights {
